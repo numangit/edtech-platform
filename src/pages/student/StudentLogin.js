@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
 
 const StudentLogin = () => {
@@ -27,9 +28,9 @@ const StudentLogin = () => {
 
                     <div class="flex items-center justify-end">
                         <div class="text-sm">
-                            <a href="./StudentReistration.html" class="font-medium text-violet-600 hover:text-violet-500">
+                            <Link to="/register" class="font-medium text-violet-600 hover:text-violet-500">
                                 Create New Account
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
