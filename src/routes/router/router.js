@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import StudentLogin from "../../pages/student/StudentLogin";
-import Leaderboard from "../../pages/student/LeaderBoard";
 import Quiz from "../../pages/student/Quiz";
 import Main from "../../layouts/Main";
+import CourseLayout from "../../layouts/CourseLayout";
+import VideoPlayer from "../../component/student/coursePlayer/VideoPlayer";
+import Leaderboard from "../../pages/student/Leaderboard";
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +13,13 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/course-player',
-                element: <Quiz />
+                element: <CourseLayout />,
+                children: [
+                    {
+                        path: '/course-player/videos/:videoId',
+                        element: <VideoPlayer />
+                    }
+                ]
             },
             {
                 path: '/login',

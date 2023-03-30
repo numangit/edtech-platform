@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Leaderboard = () => {
     return (
         <section class="py-6 bg-primary">
@@ -95,7 +93,7 @@ const Leaderboard = () => {
                 </div>
             </div>
         </section>
-    );
+    )
 };
 
 export default Leaderboard;
