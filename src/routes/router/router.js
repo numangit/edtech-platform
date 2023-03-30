@@ -7,6 +7,12 @@ import VideoPlayer from "../../component/student/coursePlayer/VideoPlayer";
 import Leaderboard from "../../pages/student/Leaderboard";
 import StudentRegistration from "../../pages/student/StudentRegistration";
 import AdminLogin from "../../pages/admin/AdminLogin";
+import AdminLayout from "../../layouts/AdminLayout";
+import AdminVideos from "../../pages/admin/AdminVideos";
+import AdminQuiz from "../../pages/admin/AdminQuiz";
+import AdminDashboard from "../../pages/admin/AdminDashboard";
+import AssignmentMark from "../../pages/admin/AssignmentMark";
+import Assignment from "../../pages/admin/Assignment";
 
 export const router = createBrowserRouter([
     //student routes
@@ -45,25 +51,27 @@ export const router = createBrowserRouter([
     //admin routes
     {
         path: '/admin',
-        element: < />,
+        element: <AdminLayout />,
         children: [
             {
-                path: '/',
-                element: <CourseLayout />,
-                children: [
-                    {
-                        path: '/videos/:videoId',
-                        element: <VideoPlayer />
-                    }
-                ]
+                path: '/admin',
+                element: <AdminDashboard />,
             },
             {
-                path: '/leaderboard',
-                element: <Leaderboard />
+                path: '/admin/assignment',
+                element: <Assignment />,
             },
             {
-                path: '/quiz',
-                element: <Quiz />
+                path: '/admin/assignment-mark',
+                element: <AssignmentMark />,
+            },
+            {
+                path: '/admin/quizzies',
+                element: <AdminQuiz />
+            },
+            {
+                path: '/admin/videos',
+                element: <AdminVideos />
             }
         ]
     },

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const AdminDashBoard = () => {
+const AdminDashboard = () => {
     return (
         <section class="py-6 bg-primary">
             <div class="mx-auto max-w-7xl px-5 lg:px-0">
@@ -53,4 +51,4 @@ const AdminDashBoard = () => {
     );
 };
 
-export default AdminDashBoard;
+export default AdminDashboard;
