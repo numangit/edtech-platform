@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import StudentLogin from "../../pages/student/StudentLogin";
 import Leaderboard from "../../pages/student/LeaderBoard";
 import Quiz from "../../pages/student/Quiz";
+import Main from "../../layouts/Main";
 
 export const router = createBrowserRouter([
     {
