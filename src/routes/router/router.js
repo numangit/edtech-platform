@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import StudentLogin from "../../pages/student/StudentLogin";
-import Quiz from "../../pages/student/Quiz";
 import Main from "../../layouts/Main";
 import CourseLayout from "../../layouts/CourseLayout";
 import VideoPlayer from "../../component/student/coursePlayer/VideoPlayer";
@@ -13,6 +12,7 @@ import AdminQuiz from "../../pages/admin/AdminQuiz";
 import AdminDashboard from "../../pages/admin/AdminDashboard";
 import AssignmentMark from "../../pages/admin/AssignmentMark";
 import Assignment from "../../pages/admin/Assignment";
+import Quizzes from "../../pages/student/Quizzes";
 
 export const router = createBrowserRouter([
     //student routes
@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/quiz',
-                element: <Quiz />
+                element: <Quizzes />
             }
         ]
     },
