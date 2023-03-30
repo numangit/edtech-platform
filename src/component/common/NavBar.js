@@ -1,8 +1,10 @@
+import logo from '../../assets/image/learningportal.svg';
+
 const NavBar = () => {
     return (
         <nav class="shadow-md">
             <div class="max-w-7xl px-5 lg:px-0 mx-auto flex justify-between py-3">
-                <img class="h-10" src="../assets/image/learningportal.svg" alt="" />
+                <img class="h-10" src={logo} alt="LWS logo" />
                 <div class="flex items-center gap-3">
                     <a href="./Leaderboard.html">Leaderboard</a>
                     <h2 class="font-bold">Saad Hasan</h2>
