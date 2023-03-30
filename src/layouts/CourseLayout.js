@@ -1,7 +1,8 @@
-import { Outlet } from "react-router-dom";
-import Videos from "../component/student/coursePlayer/Videos";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Videos from '../component/student/coursePlayer/Videos';
 
-const coursePlayer = () => {
+const CourseLayout = () => {
     return (
         <section class="py-6 bg-primary">
             <div class="mx-auto max-w-7xl px-5 lg:px-0">
@@ -14,4 +15,4 @@ const coursePlayer = () => {
     );
 };
 
-export default coursePlayer;
+export default CourseLayout;
