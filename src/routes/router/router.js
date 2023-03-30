@@ -5,25 +5,31 @@ import Main from "../../layouts/Main";
 import CourseLayout from "../../layouts/CourseLayout";
 import VideoPlayer from "../../component/student/coursePlayer/VideoPlayer";
 import Leaderboard from "../../pages/student/Leaderboard";
+import StudentRegistration from "../../pages/student/StudentRegistration";
 
 export const router = createBrowserRouter([
+    //student routes
+    {
+        path: '/login',
+        element: <StudentLogin />
+    },
+    {
+        path: '/register',
+        element: <StudentRegistration />
+    },
     {
         path: '/',
         element: <Main />,
         children: [
             {
-                path: '/course-player',
+                path: '/',
                 element: <CourseLayout />,
                 children: [
                     {
-                        path: '/course-player/videos/:videoId',
+                        path: '/videos/:videoId',
                         element: <VideoPlayer />
                     }
                 ]
-            },
-            {
-                path: '/login',
-                element: <StudentLogin />
             },
             {
                 path: '/leaderboard',
