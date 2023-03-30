@@ -1,7 +1,10 @@
+import VideoThumbnail from "./VideoThumbnail";
+
 const Videos = () => {
     return (
         <div
             class="col-span-full lg:col-auto max-h-[570px] overflow-y-auto bg-secondary p-4 rounded-md border border-slate-50/10 divide-y divide-slate-600/30">
+            <VideoThumbnail />
 
             <div class="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
                 {/* <!-- Thumbnail --> */}
