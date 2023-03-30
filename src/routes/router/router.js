@@ -66,7 +66,7 @@ export const router = createBrowserRouter([
                 element: <AssignmentMark />,
             },
             {
-                path: '/admin/quizzies',
+                path: '/admin/quizzes',
                 element: <AdminQuiz />
             },
             {

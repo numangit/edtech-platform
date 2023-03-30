@@ -1,9 +1,11 @@
+import logo from '../../assets/image/learningportal.svg';
+
 const AdminLogin = () => {
     return (
         <section class="py-6 bg-primary h-screen grid place-items-center">
             <div class="mx-auto max-w-md px-5 lg:px-0">
                 <div>
-                    <img class="h-12 mx-auto" src="../assets/image/learningportal.svg" alt="" />
+                    <img class="h-12 mx-auto" src={logo} alt="LWS Logo" />
                     <h2 class="mt-6 text-center text-3xl font-extrabold text-slate-100">
                         Sign in to Admin Account
                     </h2>
