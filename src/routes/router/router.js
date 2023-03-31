@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import StudentLogin from "../../pages/student/StudentLogin";
 import Main from "../../layouts/Main";
 import CourseLayout from "../../layouts/CourseLayout";
+import VideoPlayer from "../../component/student/coursePlayer/VideoPlayer";
 import Leaderboard from "../../pages/student/Leaderboard";
 import StudentRegistration from "../../pages/student/StudentRegistration";
 import AdminLogin from "../../pages/admin/AdminLogin";
@@ -12,7 +13,6 @@ import AdminDashboard from "../../pages/admin/AdminDashboard";
 import AssignmentMark from "../../pages/admin/AssignmentMark";
 import Assignment from "../../pages/admin/Assignment";
 import Quizzes from "../../pages/student/Quizzes";
-import ModulePlayer from "../../component/student/coursePlayer/ModulePlayer";
 
 export const router = createBrowserRouter([
     //student routes
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/modules/:id',
-                        element: <ModulePlayer />
+                        element: <VideoPlayer />
                     }
                 ]
             },

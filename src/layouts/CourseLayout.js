@@ -1,6 +1,5 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Modules from '../component/student/coursePlayer/Modules';
+import Videos from '../component/student/coursePlayer/Videos';
 
 const CourseLayout = () => {
     return (
@@ -8,7 +7,7 @@ const CourseLayout = () => {
             <div className="mx-auto max-w-7xl px-5 lg:px-0">
                 <div className="grid grid-cols-3 gap-2 lg:gap-8">
                     <Outlet />
-                    <Modules />
+                    <Videos />
                 </div>
             </div>
         </section>
