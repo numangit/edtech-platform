@@ -19,7 +19,7 @@ const StudentRank = () => {
     const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
 
     //calculate grand total
-    const grandTotal = totalQuizMark || 0 + totalAssignmentMark || 0
+    const grandTotal = totalQuizMark + totalAssignmentMark;
 
     return (
         <div>
@@ -46,7 +46,7 @@ const StudentRank = () => {
                             {isAssignmentLoading ? 'loading..' : totalAssignmentMark}
                         </td>
                         <td className="table-td text-center font-bold">
-                            {isQuizLoading && isAssignmentLoading ? 'loading..' : grandTotal}
+                            {isNaN(grandTotal) ? 'loading..' : grandTotal}
                         </td>
                     </tr>
                 </tbody>

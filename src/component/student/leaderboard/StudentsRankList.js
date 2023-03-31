@@ -1,16 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectAuth } from '../../../features/auth/authSelector';
-import { useGetUsersQuery } from '../../../features/users/usersApi';
-import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
-import { useGetQuizMarksQuery } from '../../../features/quizMark/quizMarkApi';
-import { current } from '@reduxjs/toolkit';
+import { useGetUsersByRoleQuery, useGetUsersQuery } from '../../../features/users/usersApi';
 import TableRow from './TableRow';
 
 const StudentsRankList = () => {
 
     //get all users
-    const { data: users, isLoading: isUsersLoading } = useGetUsersQuery() || {};
+    const { data: students } = useGetUsersByRoleQuery("student") || {};
 
     return (
         <div className="my-8">
@@ -25,11 +20,10 @@ const StudentsRankList = () => {
                         <th className="table-th !text-center">Total</th>
                     </tr>
                 </thead>
-
                 <tbody>
                     {
-                        users?.map(user => {
-                            return <TableRow key={user?.id} user={user} />
+                        students?.map(student => {
+                            return <TableRow key={student?.id} student={student} />
                         })
                     }
                 </tbody>

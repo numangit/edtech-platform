@@ -1,9 +1,9 @@
 import { useGetAssignmentMarkQuery } from "../../../features/assignmentMark/assignmentMarkApi";
 import { useGetQuizMarkQuery } from "../../../features/quizMark/quizMarkApi";
 
-const TableRow = ({ user }) => {
+const TableRow = ({ student }) => {
 
-    const { id } = user || {};
+    const { id, name } = student || {};
 
     //getting student quiz mark
     const { data: quizMarks, isLoading: isQuizLoading } = useGetQuizMarkQuery(id) || {};
@@ -14,12 +14,12 @@ const TableRow = ({ user }) => {
     const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
 
     //calculate grand total
-    const grandTotal = totalQuizMark || 0 + totalAssignmentMark || 0;
+    const grandTotal = totalQuizMark + totalAssignmentMark;
 
     return (
         <tr className="border-b border-slate-600/50">
             <td className="table-td text-center">4</td>
-            <td className="table-td text-center">{user.name}</td>
+            <td className="table-td text-center">{name}</td>
             <td className="table-td text-center">
                 {isQuizLoading ? 'loading..' : totalQuizMark}
             </td>
@@ -27,7 +27,7 @@ const TableRow = ({ user }) => {
                 {isAssignmentLoading ? 'loading..' : totalAssignmentMark}
             </td>
             <td className="table-td text-center">
-                {isQuizLoading && isAssignmentLoading ? 'loading..' : grandTotal}
+                {isNaN(grandTotal) ? 'loading..' : grandTotal}
             </td>
         </tr>
     );

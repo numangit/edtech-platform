@@ -3,12 +3,12 @@ import { apiSlice } from "../api/apiSlice";
 export const userApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
 
-        getUsers: builder.query({
-            query: () => ({ url: '/users' })
+        getUsersByRole: builder.query({
+            query: (role) => ({ url: `/users?role_like=${role}` })
         }),
     })
 })
 
 export const {
-    useGetUsersQuery
+    useGetUsersByRoleQuery
 } = userApi;
