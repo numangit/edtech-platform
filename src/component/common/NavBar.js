@@ -1,12 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/image/learningportal.svg';
 import { Link } from 'react-router-dom';
+import { logout } from '../../features/auth/authSlice';
 
 const NavBar = () => {
 
-    //checking user role
+    //hooks
     const { user } = useSelector(state => state.auth) || {};
+    const dispatch = useDispatch();
+
+    //checking user role
     const { name, role } = user || {};
+
+    //function to handle logout
+    const handleLogout = () => {
+        dispatch(logout());
+    };
 
     return (
         <nav className="shadow-md">
@@ -33,6 +42,7 @@ const NavBar = () => {
                     {
                         user !== undefined
                         && <button
+                            onClick={handleLogout}
                             className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                                 stroke="currentColor" className="w-6 h-6">
