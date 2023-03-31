@@ -14,16 +14,21 @@ const StudentRegistration = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    //function to reset
+    const reset = () => {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+    }
+
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
             const data = { name, email, password, role: 'student' };
             register(data);
-            setName('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
+            reset();
         } else {
             window.alert('password does not match');
         };

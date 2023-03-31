@@ -12,13 +12,18 @@ const StudentLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    //function to reset
+    const reset = () => {
+        setEmail('');
+        setPassword('');
+    };
+
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = { email, password };
         login(data);
-        setEmail('');
-        setPassword('');
+        reset();
     };
 
     return (
