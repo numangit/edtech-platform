@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import logo from '../../assets/image/learningportal.svg';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../../features/auth/authSlice';
+import logo from '../../assets/image/learningportal.svg';
 import LogoutButton from './LogoutButton';
 
 const NavBar = () => {

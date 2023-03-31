@@ -11,7 +11,7 @@ const VideoThumbnail = () => {
                     d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
             </svg>
             {/* <!-- Description --> */}
-            <div clas="flex flex-col w-full">
+            <div className="flex flex-col w-full">
                 <Link to="/videos/">
                     <p className="text-slate-50 text-sm font-medium">Things I wish I knew as a Junior Web
                         Developer - Sumit Saha - BASIS SoftExpo 2023</p>
