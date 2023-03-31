@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
 import { useState } from "react";
 import { useLoginMutation } from "../../features/auth/authApi";
 
 const StudentLogin = () => {
 
-    //mutation hook
+    //hooks
     const [login, { isLoading, isError, error }] = useLoginMutation();
+    const navigate = useNavigate();
 
     //input states
     const [email, setEmail] = useState('');
@@ -24,6 +25,9 @@ const StudentLogin = () => {
         const data = { email, password };
         login(data);
         reset();
+        if (!isError) {
+            navigate('/videos/1');
+        };
     };
 
     return (
