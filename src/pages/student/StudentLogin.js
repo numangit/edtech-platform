@@ -5,7 +5,8 @@ import { useLoginMutation } from "../../features/auth/authApi";
 
 const StudentLogin = () => {
 
-    const [login, { isLoading, isError }] = useLoginMutation();
+    //mutation hook
+    const [login, { isLoading }] = useLoginMutation();
 
     //input states
     const [email, setEmail] = useState('');
