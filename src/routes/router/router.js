@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
                 element: <CourseLayout />,
                 children: [
                     {
-                        path: '/modules/:id',
+                        path: '/videos/:id',
                         element: <VideoPlayer />
                     }
                 ]

@@ -26,7 +26,7 @@ const StudentLogin = () => {
         login(data);
         reset();
         if (!isError) {
-            navigate('/modules/1');
+            navigate('/videos/1');
         };
     };
 
