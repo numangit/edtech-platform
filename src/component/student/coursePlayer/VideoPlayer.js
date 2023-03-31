@@ -8,8 +8,7 @@ const VideoPlayer = () => {
     const { id } = useParams();
 
     //getting video data
-    const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
-    //destructuring video info
+    const { data: video } = useGetVideoQuery(id) || {};
     const { title, createdAt, description, url } = video || {};
 
     //date format
