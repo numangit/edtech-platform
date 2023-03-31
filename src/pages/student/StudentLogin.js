@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
 import { useState } from "react";
+import { useLoginMutation } from "../../features/auth/authApi";
 
 const StudentLogin = () => {
+
+    const [login, { isLoading, isError }] = useLoginMutation();
 
     //input states
     const [email, setEmail] = useState('');
@@ -11,7 +14,8 @@ const StudentLogin = () => {
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password);
+        const data = { email, password };
+        login(data);
         setEmail('');
         setPassword('');
     };
@@ -65,7 +69,7 @@ const StudentLogin = () => {
                     </div>
 
                     <div>
-                        <button type="submit"
+                        <button disabled={isLoading} type="submit"
                             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
                             Sign in
                         </button>
