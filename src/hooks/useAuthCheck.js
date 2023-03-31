@@ -5,10 +5,13 @@ import { login } from '../features/auth/authSlice';
 export default function useAuthCheck() {
 
     //hooks
-    const [userLoggedIn, setUserLoggedIn] = useState(false);
     const dispatch = useDispatch();
 
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
+        setIsLoading(true);
         const userInfo = localStorage?.getItem('authInfo'); //get authInfo from local storage
 
         if (userInfo) {
@@ -21,9 +24,11 @@ export default function useAuthCheck() {
                 }));
             };
         };
+
         setUserLoggedIn(true);
+        setIsLoading(false);
 
     }, [dispatch, setUserLoggedIn]);
 
-    return userLoggedIn;
-}
+    return { userLoggedIn, isLoading };
+};
