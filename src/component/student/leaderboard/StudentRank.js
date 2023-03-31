@@ -11,12 +11,15 @@ const StudentRank = () => {
     const { id, name } = user || {};
 
     //getting student quiz mark
-    const { data: quizMarks } = useGetQuizMarkQuery(id) || {};
+    const { data: quizMarks, isLoading: isQuizLoading } = useGetQuizMarkQuery(id) || {};
     const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
 
     //getting student assignment mark
-    const { data: assignmentMarks } = useGetAssignmentMarkQuery(id) || {};
+    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery(id) || {};
     const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
+
+    //grand total
+    const grandTotal = totalQuizMark + totalAssignmentMark
 
     return (
         <div>
@@ -36,9 +39,15 @@ const StudentRank = () => {
                     <tr className="border-2 border-cyan">
                         <td className="table-td text-center font-bold">4</td>
                         <td className="table-td text-center font-bold">{name}</td>
-                        <td className="table-td text-center font-bold">{totalQuizMark}</td>
-                        <td className="table-td text-center font-bold">{totalAssignmentMark}</td>
-                        <td className="table-td text-center font-bold">{totalQuizMark + totalAssignmentMark}</td>
+                        <td className="table-td text-center font-bold">
+                            {isQuizLoading ? 'loading..' : totalQuizMark}
+                        </td>
+                        <td className="table-td text-center font-bold">
+                            {isAssignmentLoading ? 'loading..' : totalAssignmentMark}
+                        </td>
+                        <td className="table-td text-center font-bold">
+                            {isQuizLoading && isAssignmentLoading ? 'loading..' : grandTotal}
+                        </td>
                     </tr>
                 </tbody>
             </table>
