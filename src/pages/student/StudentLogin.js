@@ -6,7 +6,7 @@ import { useLoginMutation } from "../../features/auth/authApi";
 const StudentLogin = () => {
 
     //mutation hook
-    const [login, { isLoading }] = useLoginMutation();
+    const [login, { isLoading, isError, error }] = useLoginMutation();
 
     //input states
     const [email, setEmail] = useState('');
@@ -65,7 +65,12 @@ const StudentLogin = () => {
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
                     </div>
-
+                    {
+                        isError &&
+                        <div >
+                            <p className="text-red-500 text-center">{error.data}</p>
+                        </div>
+                    }
                     <div class="flex items-center justify-end">
                         <div class="text-sm">
                             <Link to="/register" class="font-medium text-violet-600 hover:text-violet-500">

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const StudentRegistration = () => {
 
     //mutation hook
-    const [register, { isLoading }] = useRegisterMutation();
+    const [register, { isLoading, isError, error }] = useRegisterMutation();
 
     //input states
     const [name, setName] = useState('');
@@ -99,7 +99,12 @@ const StudentRegistration = () => {
                                 onChange={e => setConfirmPassword(e.target.value)} />
                         </div>
                     </div>
-
+                    {
+                        isError &&
+                        <div >
+                            <p className="text-red-500 text-center">{error.data}</p>
+                        </div>
+                    }
                     <div class="flex items-center justify-end">
                         <div class="text-sm">
                             <Link to="/login" class="font-medium text-violet-600 hover:text-violet-500">
