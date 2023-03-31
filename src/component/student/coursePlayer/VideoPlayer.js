@@ -1,21 +1,32 @@
 import React from 'react';
+import { useGetVideoQuery } from '../../../features/videos/videoApi';
+import { useParams } from 'react-router-dom';
 
 const VideoPlayer = () => {
+
+    //getting the video id from url 
+    const { id } = useParams();
+
+    //getting video data
+    const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
+    //destructuring video info
+    const { title, createdAt, description, duration, url, views } = video || {};
+
     return (
         <div className="col-span-full w-full space-y-8 lg:col-span-2">
-            <iframe width="100%" className="aspect-video" src="https://www.youtube.com/embed/56zUkaXJnUA"
-                title="Things I wish I knew as a Junior Web Developer - Sumit Saha - BASIS SoftExpo 2023"
+            <iframe width="100%" className="aspect-video" src={url}
+                title={title}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen></iframe>
 
             <div>
                 <h1 className="text-lg font-semibold tracking-tight text-slate-100">
-                    Things I wish I knew as a Junior Web Developer - Sumit Saha - BASIS SoftExpo 2023
+                    {title}
                 </h1>
                 <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
                     Uploaded on 23 February
-                    2020</h2>
+                    2020, {createdAt}</h2>
 
                 <div className="flex gap-4">
                     <a href="#"
@@ -29,16 +40,8 @@ const VideoPlayer = () => {
                         করুন</a>
                 </div>
                 <p className="mt-4 text-sm text-slate-400 leading-6">
-                    আপনারা যারা বিগিনার হিসেবে রিয়্যাক্ট জেস নিয়ে কাজ করা শুরু করেছেন, তারা রিয়্যাক্ট এর বেশ
-                    কিছু কনসেপ্ট ঠিক মতো আয়ত্ত না করতে পারার কারণে বিচিত্র কিছু সমস্যার সম্মুখীন হন এবং শেষ
-                    পর্যন্ত বুঝতে না
-                    পেরে হতাশ হয়ে পড়েন। তাদের জন্যই এই ভিডিওটি। এই ভিডিওতে আমি এমন ১০টি সমস্যার কথা তুলে ধরেছি
-                    যেগুলো
-                    বিগিনার হিসেবে আপনারা অহরহ সম্মুখীন হবেন। আশা করি ভিডিওটি দেখলে আপনাদের এই সমস্যাগুলো নিয়ে
-                    আর কনফিউশন
-                    থাকবেনা।
+                    {description}
                 </p>
-
 
             </div>
         </div>
