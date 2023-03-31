@@ -9,10 +9,13 @@ const Videos = () => {
     //what to render
     let content = null;
 
-    if (isLoading) content = <div className="text-center">Loading...</div>;
-    if (!isLoading && isError) content = <div className="text-center"> {error?.data}</div>;
-    if (!isLoading && !isError && videos?.length === 0) content = <div className="text-center">No videos found!</div>;
-    if (!isLoading && !isError && videos?.length > 0) {
+    if (isLoading) {
+        content = <div className="text-center">Loading...</div>;
+    } else if (!isLoading && isError) {
+        content = <div className="text-center"> {error?.data}</div>;
+    } else if (!isLoading && !isError && videos?.length === 0) {
+        content = <div className="text-center">No videos found!</div>;
+    } else if (!isLoading && !isError && videos?.length > 0) {
         content = videos.map(video => <Video key={video.id} video={video} />)
     }
 

@@ -8,7 +8,7 @@ const VideoPlayer = () => {
     const { id } = useParams();
 
     //getting video data
-    const { data: video } = useGetVideoQuery(id) || {};
+    const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
     const { title, createdAt, description, url } = video || {};
 
     //date format
@@ -17,36 +17,51 @@ const VideoPlayer = () => {
 
     return (
         <div className="col-span-full w-full space-y-8 lg:col-span-2">
-            <iframe width="100%" className="aspect-video" src={url}
-                title={title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen></iframe>
+            {
+                isLoading && <div className="text-center">Loading...</div>
+            }
+            {
+                (!isLoading && isError)
+                && <div className="text-center"> {error?.error}</div>
+            }
+            {
+                (!isLoading && !isError && !video?.id) && <div className="text-center">No video found!</div>
+            }
+            {
+                (!isLoading && !isError && video?.id)
+                && <>
+                    <iframe width="100%" className="aspect-video" src={url}
+                        title={title}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>
 
-            <div>
-                <h1 className="text-lg font-semibold tracking-tight text-slate-100">
-                    {title}
-                </h1>
-                <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
-                    Uploaded on {date[1]} {longMonth} {date[2]}
-                </h2>
+                    <div>
+                        <h1 className="text-lg font-semibold tracking-tight text-slate-100">
+                            {title}
+                        </h1>
+                        <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
+                            Uploaded on {date[1]} {longMonth} {date[2]}
+                        </h2>
 
-                <div className="flex gap-4">
-                    <a href="#"
-                        className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                        এসাইনমেন্ট
-                    </a>
+                        <div className="flex gap-4">
+                            <a href="#"
+                                className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                                এসাইনমেন্ট
+                            </a>
 
-                    <a href="./Quiz.html"
-                        className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">কুইজে
-                        অংশগ্রহণ
-                        করুন</a>
-                </div>
-                <p className="mt-4 text-sm text-slate-400 leading-6">
-                    {description}
-                </p>
+                            <a href="./Quiz.html"
+                                className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                                কুইজে অংশগ্রহণ করুন
+                            </a>
+                        </div>
+                        <p className="mt-4 text-sm text-slate-400 leading-6">
+                            {description}
+                        </p>
 
-            </div>
+                    </div>
+                </>
+            }
         </div>
     );
 };
