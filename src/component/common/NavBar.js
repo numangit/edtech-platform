@@ -21,7 +21,7 @@ const NavBar = () => {
                         ? <Link to="/admin">
                             <img className="h-10" src={logo} alt="LWS logo" />
                         </Link>
-                        : <Link to="/videos/1">
+                        : <Link to="/modules/1">
                             <img className="h-10" src={logo} alt="LWS logo" />
                         </Link>
                 }

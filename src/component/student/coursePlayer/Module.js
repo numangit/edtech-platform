@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const ModuleItem = () => {
+const Module = () => {
     return (
         <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
             {/* <!-- Thumbnail --> */}
@@ -27,4 +26,4 @@ const ModuleItem = () => {
     );
 };
 
-export default ModuleItem;
+export default Module;

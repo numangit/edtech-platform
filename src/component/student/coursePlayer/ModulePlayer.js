@@ -1,4 +1,4 @@
-const VideoPlayer = () => {
+const ModulePlayer = () => {
     return (
         <div className="col-span-full w-full space-y-8 lg:col-span-2">
             <iframe width="100%" className="aspect-video" src="https://www.youtube.com/embed/56zUkaXJnUA"
@@ -43,4 +43,4 @@ const VideoPlayer = () => {
     );
 };
 
-export default VideoPlayer;
+export default ModulePlayer;
