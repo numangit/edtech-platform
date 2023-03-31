@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGetVideoQuery } from '../../../features/videos/videoApi';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const VideoPlayer = () => {
 
@@ -50,10 +50,10 @@ const VideoPlayer = () => {
                                 এসাইনমেন্ট
                             </a>
 
-                            <a href="./Quiz.html"
+                            <Link to="/quiz"
                                 className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
                                 কুইজে অংশগ্রহণ করুন
-                            </a>
+                            </Link>
                         </div>
                         <p className="mt-4 text-sm text-slate-400 leading-6">
                             {description}

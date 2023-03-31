@@ -29,7 +29,10 @@ const NavBar = () => {
                 <div className="flex items-center gap-3">
 
                     {
-                        role === "student" && <a href="./Leaderboard.html">Leaderboard</a>
+                        role === "student"
+                        && <Link to="/leaderboard">
+                            Leaderboard
+                        </Link>
                     }
 
                     <h2 className="font-bold">{name}</h2>

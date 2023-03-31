@@ -48,8 +48,8 @@ const AdminDashboard = () => {
                 <div className="px-3 md:lg:xl:px-40  py-20 bg-opacity-10">
                     <div className="grid grid-cols-1 md:grid-cols-2  gap-6 p-8">
                         {
-                            options.map(option =>
-                                <Link to={option.link} className="dashboard-item-card">
+                            options.map((option, i) =>
+                                <Link key={i} to={option.link} className="dashboard-item-card">
                                     {option.logo}
                                     <p className="text-slate-200 mt-3 ">{option.name}</p>
                                 </Link>
