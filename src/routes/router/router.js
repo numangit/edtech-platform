@@ -13,31 +13,30 @@ import AssignmentMark from "../../pages/admin/AssignmentMark";
 import Assignment from "../../pages/admin/Assignment";
 import Quizzes from "../../pages/student/Quizzes";
 import ModulePlayer from "../../component/student/coursePlayer/ModulePlayer";
-import StudentRoute from "../StudentRoute/StudentRoute";
 
 export const router = createBrowserRouter([
     //student routes
     {
         path: '/',
-        element: <StudentRoute><Main /></StudentRoute>,
+        element: <Main />,
         children: [
             {
                 path: '/',
-                element: <StudentRoute><CourseLayout /></StudentRoute>,
+                element: <CourseLayout />,
                 children: [
                     {
                         path: '/modules/:id',
-                        element: <StudentRoute><ModulePlayer /></StudentRoute>
+                        element: <ModulePlayer />
                     }
                 ]
             },
             {
                 path: '/leaderboard',
-                element: <StudentRoute><Leaderboard /></StudentRoute>
+                element: <Leaderboard />
             },
             {
                 path: '/quiz',
-                element: <StudentRoute><Quizzes /></StudentRoute>
+                element: <Quizzes />
             }
         ]
     },

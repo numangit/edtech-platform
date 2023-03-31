@@ -10,6 +10,7 @@ const LogoutButton = () => {
     //function to handle logout
     const handleLogout = () => {
         dispatch(logout());
+        localStorage.clear();
     };
 
     return (
