@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const VideoThumbnail = () => {
     return (
         <div class="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
@@ -10,10 +12,10 @@ const VideoThumbnail = () => {
             </svg>
             {/* <!-- Description --> */}
             <div clas="flex flex-col w-full">
-                <a href="#">
+                <Link to="/videos/">
                     <p class="text-slate-50 text-sm font-medium">Things I wish I knew as a Junior Web
                         Developer - Sumit Saha - BASIS SoftExpo 2023</p>
-                </a>
+                </Link>
                 <div>
                     <span class="text-gray-400 text-xs mt-1">34.5 Mins</span>
                     <span class="text-gray-400 text-xs mt-1"> | </span>
