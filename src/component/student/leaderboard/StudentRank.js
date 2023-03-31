@@ -6,11 +6,14 @@ import { useGetQuizMarkQuery } from '../../../features/quizMark/quizMarkApi';
 const StudentRank = () => {
 
     //getting info related to current student
-    const { user } = useSelector(selectAuth) || {};
-    const { id, name } = user || {};
+    const { user: { id, name } } = useSelector(selectAuth) || {};
 
     //getting student quiz mark
-    const { data: quizMarks } = useGetQuizMarkQuery(id);
+    const { data: quizMarks } = useGetQuizMarkQuery(id) || {};
+    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.totalMark, 0);
+
+    //getting student quiz mark
+    const { data: quizMarks } = useGetQuizMarkQuery(id) || {};
     const totalQuizMark = quizMarks?.reduce((total, current) => total + current.totalMark, 0);
 
     return (
