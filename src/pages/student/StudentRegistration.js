@@ -35,65 +35,65 @@ const StudentRegistration = () => {
     };
 
     return (
-        <section class="py-6 bg-primary h-screen grid place-items-center">
-            <div class="mx-auto max-w-md px-5 lg:px-0">
+        <section className="py-6 bg-primary h-screen grid place-items-center">
+            <div className="mx-auto max-w-md px-5 lg:px-0">
                 <div>
-                    <img class="h-12 mx-auto" src={logo} alt="LWS Logo" />
-                    <h2 class="mt-6 text-center text-3xl font-extrabold text-slate-100">
+                    <img className="h-12 mx-auto" src={logo} alt="LWS Logo" />
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-100">
                         Create Your New Account
                     </h2>
                 </div>
-                <form onSubmit={handleSubmit} class="mt-8 space-y-6" action="#" method="POST">
+                <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" value="true" />
-                    <div class="rounded-md shadow-sm -space-y-px">
+                    <div className="rounded-md shadow-sm -space-y-px">
                         <div>
-                            <label for="name" class="sr-only">Name</label>
+                            <label htmlFor="name" className="sr-only">Name</label>
                             <input
                                 id="name"
                                 name="name"
                                 type="name"
-                                autocomplete="name"
+                                autoComplete="name"
                                 required
-                                class="login-input rounded-t-md"
+                                className="login-input rounded-t-md"
                                 placeholder="Student Name"
                                 value={name}
                                 onChange={e => setName(e.target.value)} />
                         </div>
                         <div>
-                            <label for="email-address" class="sr-only">Email address</label>
+                            <label htmlFor="email-address" className="sr-only">Email address</label>
                             <input
                                 id="email-address"
                                 name="email"
                                 type="email"
-                                autocomplete="email"
+                                autoComplete="email"
                                 required
-                                class="login-input "
+                                className="login-input "
                                 placeholder="Email address"
                                 value={email}
                                 onChange={e => setEmail(e.target.value)} />
                         </div>
                         <div>
-                            <label for="password" class="sr-only">Password</label>
+                            <label htmlFor="password" className="sr-only">Password</label>
                             <input
                                 id="password"
                                 name="password"
                                 type="password"
-                                autocomplete="current-password"
+                                autoComplete="current-password"
                                 required
-                                class="login-input"
+                                className="login-input"
                                 placeholder="Password"
                                 value={password}
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div>
-                            <label for="confirm-password" class="sr-only">Confirm Password</label>
+                            <label htmlFor="confirm-password" className="sr-only">Confirm Password</label>
                             <input
                                 id="confirm-password"
                                 name="confirm-password"
                                 type="password"
-                                autocomplete="confirm-password"
+                                autoComplete="confirm-password"
                                 required
-                                class="login-input rounded-b-md"
+                                className="login-input rounded-b-md"
                                 placeholder="Confirm Password"
                                 value={confirmPassword}
                                 onChange={e => setConfirmPassword(e.target.value)} />
@@ -105,9 +105,9 @@ const StudentRegistration = () => {
                             <p className="text-red-500 text-center">{error.data}</p>
                         </div>
                     }
-                    <div class="flex items-center justify-end">
-                        <div class="text-sm">
-                            <Link to="/login" class="font-medium text-violet-600 hover:text-violet-500">
+                    <div className="flex items-center justify-end">
+                        <div className="text-sm">
+                            <Link to="/login" className="font-medium text-violet-600 hover:text-violet-500">
                                 Already have an account?
                             </Link>
                         </div>
@@ -115,7 +115,7 @@ const StudentRegistration = () => {
 
                     <div>
                         <button disabled={isLoading} type="submit"
-                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
                             Create Account
                         </button>
                     </div>
