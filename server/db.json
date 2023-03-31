@@ -48,6 +48,13 @@
       "role": "student",
       "name": "Arif",
       "id": 7
+    },
+    {
+      "email": "numan@doit.com",
+      "password": "$2a$10$GfV4y0r4OeIyFaF.KW1nguNKggRbqaFOG44vEaEDRfwhcqNVvt1zO",
+      "name": "Numan",
+      "role": "student",
+      "id": 8
     }
   ],
   "videos": [

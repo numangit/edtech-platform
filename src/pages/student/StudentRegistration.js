@@ -17,10 +17,16 @@ const StudentRegistration = () => {
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = { email, password };
-        register(data);
-        setEmail('');
-        setPassword('');
+        if (password === confirmPassword) {
+            const data = { name, email, password, role: 'student' };
+            register(data);
+            setName('');
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+        } else {
+            window.alert('password does not match');
+        };
     };
 
     return (
