@@ -4,7 +4,7 @@ import Video from './Video';
 const Videos = () => {
 
     //hooks
-    const { data: videos, isLoading, isError, error } = useGetVideosQuery();
+    const { data: videos, isLoading, isError, error } = useGetVideosQuery() || {};
 
     //what to render
     let content = null;
