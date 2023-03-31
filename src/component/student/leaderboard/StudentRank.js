@@ -2,19 +2,21 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../features/auth/authSelector';
 import { useGetQuizMarkQuery } from '../../../features/quizMark/quizMarkApi';
+import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 
 const StudentRank = () => {
 
     //getting info related to current student
-    const { user: { id, name } } = useSelector(selectAuth) || {};
+    const { user } = useSelector(selectAuth) || {};
+    const { id, name } = user || {};
 
     //getting student quiz mark
     const { data: quizMarks } = useGetQuizMarkQuery(id) || {};
-    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.totalMark, 0);
+    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
 
-    //getting student quiz mark
-    const { data: quizMarks } = useGetQuizMarkQuery(id) || {};
-    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.totalMark, 0);
+    //getting student assignment mark
+    const { data: assignmentMarks } = useGetAssignmentMarkQuery(id) || {};
+    const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
 
     return (
         <div>
@@ -35,8 +37,8 @@ const StudentRank = () => {
                         <td className="table-td text-center font-bold">4</td>
                         <td className="table-td text-center font-bold">{name}</td>
                         <td className="table-td text-center font-bold">{totalQuizMark}</td>
-                        <td className="table-td text-center font-bold">50</td>
-                        <td className="table-td text-center font-bold">100</td>
+                        <td className="table-td text-center font-bold">{totalAssignmentMark}</td>
+                        <td className="table-td text-center font-bold">{totalQuizMark + totalAssignmentMark}</td>
                     </tr>
                 </tbody>
             </table>
