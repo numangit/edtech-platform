@@ -10,7 +10,11 @@ const VideoPlayer = () => {
     //getting video data
     const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
     //destructuring video info
-    const { title, createdAt, description, duration, url, views } = video || {};
+    const { title, createdAt, description, url } = video || {};
+
+    //date format
+    const longMonth = new Date(createdAt).toLocaleString('en-us', { month: 'long' })
+    const date = new Date(createdAt).toDateString().slice(4).split(' ');
 
     return (
         <div className="col-span-full w-full space-y-8 lg:col-span-2">
@@ -25,8 +29,8 @@ const VideoPlayer = () => {
                     {title}
                 </h1>
                 <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
-                    Uploaded on 23 February
-                    2020, {createdAt}</h2>
+                    Uploaded on {date[1]} {longMonth} {date[2]}
+                </h2>
 
                 <div className="flex gap-4">
                     <a href="#"
