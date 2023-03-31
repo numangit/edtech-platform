@@ -18,8 +18,8 @@ const StudentRank = () => {
     const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery(id) || {};
     const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
 
-    //grand total
-    const grandTotal = totalQuizMark + totalAssignmentMark
+    //calculate grand total
+    const grandTotal = totalQuizMark || 0 + totalAssignmentMark || 0
 
     return (
         <div>
