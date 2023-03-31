@@ -1,19 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../features/auth/authSelector';
+import { useGetUsersQuery } from '../../../features/users/usersApi';
+import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 
 const StudentsRankList = () => {
 
-    //getting info related to current student
-    const { user } = useSelector(selectAuth) || {};
-    const { id, name } = user || {};
+    //get all users
+    const { data: users, isLoading: isUsersLoading } = useGetUsersQuery() || {};
 
     //getting student quiz mark
-    const { data: quizMarks, isLoading: isQuizLoading } = useGetQuizMarkQuery(id) || {};
+    const { data: quizMarks, isLoading: isQuizLoading } = useGetAssignmentMarkQuery() || {};
     const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
 
     //getting student assignment mark
-    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery(id) || {};
+    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery() || {};
     const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
 
     //calculate grand total
