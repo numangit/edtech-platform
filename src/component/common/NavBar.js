@@ -35,7 +35,7 @@ const NavBar = () => {
                     <h2 className="font-bold">{name}</h2>
 
                     {
-                        user !== undefined && <LogoutButton />
+                        user !== undefined && <LogoutButton role={role} />
                     }
 
                 </div>
