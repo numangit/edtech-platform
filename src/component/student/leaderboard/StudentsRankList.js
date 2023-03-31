@@ -3,22 +3,14 @@ import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../features/auth/authSelector';
 import { useGetUsersQuery } from '../../../features/users/usersApi';
 import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
+import { useGetQuizMarksQuery } from '../../../features/quizMark/quizMarkApi';
+import { current } from '@reduxjs/toolkit';
+import TableRow from './TableRow';
 
 const StudentsRankList = () => {
 
     //get all users
     const { data: users, isLoading: isUsersLoading } = useGetUsersQuery() || {};
-
-    //getting student quiz mark
-    const { data: quizMarks, isLoading: isQuizLoading } = useGetAssignmentMarkQuery() || {};
-    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //getting student assignment mark
-    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery() || {};
-    const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //calculate grand total
-    const grandTotal = totalQuizMark || 0 + totalAssignmentMark || 0
 
     return (
         <div className="my-8">
@@ -35,17 +27,15 @@ const StudentsRankList = () => {
                 </thead>
 
                 <tbody>
-                    <tr className="border-b border-slate-600/50">
-                        <td className="table-td text-center">4</td>
-                        <td className="table-td text-center">Saad Hasan</td>
-                        <td className="table-td text-center">50</td>
-                        <td className="table-td text-center">50</td>
-                        <td className="table-td text-center">100</td>
-                    </tr>
+                    {
+                        users?.map(user => {
+                            return <TableRow key={user?.id} user={user} />
+                        })
+                    }
                 </tbody>
             </table>
         </div>
     );
 };
-
 export default StudentsRankList;
+
