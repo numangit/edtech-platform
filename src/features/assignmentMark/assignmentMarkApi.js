@@ -18,23 +18,22 @@ export const assignmentMarkApi = apiSlice.injectEndpoints({
                 body: data,
             }),
             // update optimistically 
-            // async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+            async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+                const { data: updatedData } = await queryFulfilled;
+                //silently update cache
+                const patchResult = dispatch(
+                    apiSlice.util.updateQueryData('getAssignmentMarks', undefined, (draft) => {
+                        const assignmentIndex = draft?.findIndex(x => x.id === id);
+                        draft[assignmentIndex] = { ...updatedData };
+                    }),
+                );
 
-            //     const { data: updatedAssignment } = await queryFulfilled;
-
-            //     const patchResult = dispatch(
-            //         apiSlice.util.updateQueryData('getAssignmentMarks', undefined, (draft) => {
-
-            //             const targetedAssignment = draft?.find((assignment) => assignment.id === id);
-            //             return { ...targetedAssignment, ...updatedAssignment };
-            //         }),
-            //     );
-            //     try {
-            //         await queryFulfilled;
-            //     } catch (err) {
-            //         patchResult.undo();
-            //     }
-            // },
+                try {
+                    await queryFulfilled;
+                } catch (err) {
+                    patchResult.undo();
+                }
+            },
         }),
     })
 })
