@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGetVideoQuery } from '../../../features/videos/videoApi';
 import { Link, useParams } from 'react-router-dom';
+import { useGetQuizByVideoIdQuery } from '../../../features/quiz/quizApi';
 
 const VideoPlayer = () => {
 
@@ -10,6 +11,9 @@ const VideoPlayer = () => {
     //getting video data
     const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
     const { title, createdAt, description, url } = video || {};
+
+    //getting quizzes by videoId
+    const { data: quizzes, } = useGetQuizByVideoIdQuery(id) || {};
 
     //date format
     const longMonth = new Date(createdAt).toLocaleString('en-us', { month: 'long' })
@@ -45,15 +49,18 @@ const VideoPlayer = () => {
                         </h2>
 
                         <div className="flex gap-4">
-                            <a href="#"
+                            <Link to="/"
                                 className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
                                 এসাইনমেন্ট
-                            </a>
-
-                            <Link to={`/quiz/${id}`}
-                                className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                                কুইজে অংশগ্রহণ করুন
                             </Link>
+                            {
+                                quizzes?.length !== 0
+                                && <Link to={`/quiz/${id}`}
+                                    className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                                    কুইজে অংশগ্রহণ করুন
+                                </Link>
+                            }
+
                         </div>
                         <p className="mt-4 text-sm text-slate-400 leading-6">
                             {description}
