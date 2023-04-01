@@ -1,11 +1,14 @@
 import React from 'react';
 
-const VideoTableRow = () => {
+const VideoTableRow = ({ video }) => {
+
+    //destructuring video info
+    const { id, title, description } = video || {};
+
     return (
         <tr>
-            <td className="table-td">Lesson 4 - Explicit &amp; Union Types - TypeScript Bangla ( বাংলা )
-                Tutorial Series</td>
-            <td className="table-td">This is the 4th video of this...</td>
+            <td className="table-td">{title}</td>
+            <td className="table-td">{description.substring(0, 50)}...</td>
             <td className="table-td flex gap-x-2">
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                     className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all">
