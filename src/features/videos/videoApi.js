@@ -19,16 +19,16 @@ export const videoApi = apiSlice.injectEndpoints({
             }),
 
             // delete optimistically
-            // async onQueryStarted(id, { dispatch, queryFulfilled }) {
-            //     const patchResult = dispatch(apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
-            //         return draft?.filter((video) => video?.id !== id);
-            //     }));
-            //     try {
-            //         await queryFulfilled;
-            //     } catch (err) {
-            //         patchResult.undo();
-            //     }
-            // },
+            async onQueryStarted(id, { dispatch, queryFulfilled }) {
+                const patchResult = dispatch(apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
+                    return draft?.filter((video) => video?.id !== parseInt(id));
+                }));
+                try {
+                    await queryFulfilled;
+                } catch (err) {
+                    patchResult.undo();
+                };
+            },
         }),
 
     })

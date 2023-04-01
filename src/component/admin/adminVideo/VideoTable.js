@@ -11,11 +11,11 @@ const VideoTable = () => {
     let content = null;
 
     if (isLoading) {
-        content = <div className="text-center">Loading...</div>;
+        content = <tr><td className="text-center">Loading...</td></tr>;
     } else if (!isLoading && isError) {
-        content = <div className="text-center"> {error?.error}</div>;
+        content = <tr><td className="text-center"> {error?.error}</td></tr>;
     } else if (!isLoading && !isError && videos?.length === 0) {
-        content = <div className="text-center">No videos found!</div>;
+        content = <tr><td className="text-center">No videos found!</td></tr>;
     } else if (!isLoading && !isError && videos?.length > 0) {
         content = videos.map(video => <VideoTableRow key={video.id} video={video} />)
     };

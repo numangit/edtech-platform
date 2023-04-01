@@ -8,7 +8,6 @@ const VideoDeleteButton = ({ videoId }) => {
 
     //function to handle delete
     const handleDelete = (id) => {
-        console.log("jjijij");
         deleteVideo(id);
     };
 
