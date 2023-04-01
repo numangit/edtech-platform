@@ -1,13 +1,11 @@
+import Status from "../../component/admin/assignmentMark/Status";
+
 const AssignmentMark = () => {
     return (
         <section className="py-6 bg-primary">
             <div className="mx-auto max-w-full px-5 lg:px-20">
                 <div className="px-3 py-20 bg-opacity-10">
-                    <ul className="assignment-status">
-                        <li>Total <span>4</span></li>
-                        <li>Pending <span>3</span></li>
-                        <li>Mark Sent <span>1</span></li>
-                    </ul>
+                    <Status />
                     <div className="overflow-x-auto mt-4">
                         <table className="divide-y-1 text-base divide-gray-600 w-full">
                             <thead>
