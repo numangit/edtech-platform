@@ -2,6 +2,7 @@ import React from 'react';
 import { useGetVideoQuery } from '../../../features/videos/videoApi';
 import { Link, useParams } from 'react-router-dom';
 import { useGetQuizByVideoIdQuery } from '../../../features/quiz/quizApi';
+import { useGetAssignmentByVideoIdQuery } from '../../../features/assignment/assignmentApi';
 
 const VideoPlayer = () => {
 
@@ -14,6 +15,9 @@ const VideoPlayer = () => {
 
     //getting quizzes by videoId
     const { data: quizzes, } = useGetQuizByVideoIdQuery(id) || {};
+
+    //getting assignments by videoId
+    const { data: assignments, } = useGetAssignmentByVideoIdQuery(id) || {};
 
     //date format
     const longMonth = new Date(createdAt).toLocaleString('en-us', { month: 'long' })
@@ -49,10 +53,14 @@ const VideoPlayer = () => {
                         </h2>
 
                         <div className="flex gap-4">
-                            <Link to="/"
-                                className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                                এসাইনমেন্ট
-                            </Link>
+                            {
+                                assignments?.length !== 0
+                                && <Link to="/"
+                                    className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                                    এসাইনমেন্ট
+                                </Link>
+                            }
+
                             {
                                 quizzes?.length !== 0
                                 && <Link to={`/quiz/${id}`}
