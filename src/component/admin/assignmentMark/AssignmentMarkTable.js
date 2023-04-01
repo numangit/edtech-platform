@@ -16,7 +16,7 @@ const AssignmentMarkTable = () => {
     } else if (!isLoading && !isError && marks?.length === 0) {
         content = <tr><td className="text-center">No marks found!</td></tr>;
     } else if (!isLoading && !isError && marks?.length > 0) {
-        content = marks.map(mark => <AssignmentMarkRow key={mark.id} mark={mark} />)
+        content = marks.map(markData => <AssignmentMarkRow key={markData.id} markData={markData} />)
     };
 
     return (
