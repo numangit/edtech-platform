@@ -1,6 +1,24 @@
+import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 import AssignmentMarkRow from './AssignmentMarkRow';
 
 const AssignmentMarkTable = () => {
+
+    //getting the assignment marks
+    const { data: marks, isLoading, isError, error } = useGetAssignmentMarksQuery() || {};
+
+    //what to render
+    let content = null;
+
+    if (isLoading) {
+        content = <tr><td className="text-center">Loading...</td></tr>;
+    } else if (!isLoading && isError) {
+        content = <tr><td className="text-center"> {error?.error}</td></tr>;
+    } else if (!isLoading && !isError && marks?.length === 0) {
+        content = <tr><td className="text-center">No marks found!</td></tr>;
+    } else if (!isLoading && !isError && marks?.length > 0) {
+        content = marks.map(mark => <AssignmentMarkRow key={mark.id} mark={mark} />)
+    };
+
     return (
         <table className="divide-y-1 text-base divide-gray-600 w-full">
             <thead>
@@ -14,28 +32,7 @@ const AssignmentMarkTable = () => {
             </thead>
 
             <tbody className="divide-y divide-slate-600/50">
-                <AssignmentMarkRow />
-                <tr>
-                    <td className="table-td">Assignment 2 - Implement Best Practices</td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Akash Ahmed</td>
-                    <td className="table-td">https://github.com/Learn-with-Sumit/assignment-1</td>
-                    <td className="table-td">50</td>
-                </tr>
-                <tr>
-                    <td className="table-td">Assignment 1 - Scoreboard Application</td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Ferdous</td>
-                    <td className="table-td">https://github.com/Learn-with-Sumit/assignment-1</td>
-                    <td className="table-td">100</td>
-                </tr>
-                <tr>
-                    <td className="table-td">Assignment 1 - Scoreboard Application</td>
-                    <td className="table-td">10 Mar 2023 10:58:13 PM</td>
-                    <td className="table-td">Saad Hasan</td>
-                    <td className="table-td">https://github.com/Learn-with-Sumit/assignment-1</td>
-                    <td className="table-td">100</td>
-                </tr>
+                {content}
             </tbody>
         </table>
     );
