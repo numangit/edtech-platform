@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Quiz = ({ quiz }) => {
+const Quiz = ({ quiz, index }) => {
 
     //destructuring quiz
     const { id, question, options } = quiz || {};
 
     return (
         <div className="quiz">
-            <h4 className="question">Quiz 1 - {question}</h4>
+            <h4 className="question">Quiz {index + 1} - {question}</h4>
             <form className="quizOptions">
                 {
                     options?.map(option => <label

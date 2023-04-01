@@ -24,7 +24,7 @@ const Quizzes = () => {
     } else if (!isLoading && isError) {
         content = <div className="text-center"> {error?.error}</div>;
     } else if (!isLoading && !isError && quizzes?.length > 0) {
-        content = quizzes?.map(quiz => <Quiz key={quiz.id} quiz={quiz} />)
+        content = quizzes?.map((quiz, index) => <Quiz key={quiz.id} quiz={quiz} index={index} />)
     };
 
     return (
