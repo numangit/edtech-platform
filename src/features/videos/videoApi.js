@@ -12,11 +12,25 @@ export const videoApi = apiSlice.injectEndpoints({
         }),
 
         deleteVideo: builder.mutation({
+
             query: (id) => ({
                 url: `/videos/${id}`,
                 method: 'DELETE',
-            })
-        })
+            }),
+
+            // delete optimistically
+            // async onQueryStarted(id, { dispatch, queryFulfilled }) {
+            //     const patchResult = dispatch(apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
+            //         return draft?.filter((video) => video?.id !== id);
+            //     }));
+            //     try {
+            //         await queryFulfilled;
+            //     } catch (err) {
+            //         patchResult.undo();
+            //     }
+            // },
+        }),
+
     })
 })
 
