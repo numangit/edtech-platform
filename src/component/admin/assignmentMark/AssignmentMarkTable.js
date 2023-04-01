@@ -1,7 +1,6 @@
-import React from 'react';
 import AssignmentMarkRow from './AssignmentMarkRow';
 
-const AssignmentTable = () => {
+const AssignmentMarkTable = () => {
     return (
         <table className="divide-y-1 text-base divide-gray-600 w-full">
             <thead>
@@ -42,4 +41,4 @@ const AssignmentTable = () => {
     );
 };
 
-export default AssignmentTable;
+export default AssignmentMarkTable;
