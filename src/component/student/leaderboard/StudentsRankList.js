@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetUsersByRoleQuery, useGetUsersQuery } from '../../../features/users/usersApi';
+import { useGetUsersByRoleQuery } from '../../../features/users/usersApi';
 import TableRow from './TableRow';
 
 const StudentsRankList = () => {
