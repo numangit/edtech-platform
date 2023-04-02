@@ -236,6 +236,18 @@
       "mark": 200,
       "repo_link": "https://github.com/Learn-with-Sumit/assignment-1",
       "status": "published"
+    },
+    {
+      "student_id": 3,
+      "student_name": "Akash Ahmed",
+      "assignment_id": 1,
+      "title": "Assignment 1 - Implement Debounce Function",
+      "createdAt": "2023-04-02T20:31:34.118Z",
+      "totalMark": 100,
+      "mark": 0,
+      "repo_link": "https://github.com/",
+      "status": "pending",
+      "id": 5
     }
   ],
   "quizMark": [

@@ -1,11 +1,38 @@
-const AssignmentModal = ({ assignment, setShowModal }) => {
+import { useState } from "react";
+import { useAddAssignmentMarkMutation } from "../../../features/assignmentMark/assignmentMarkApi";
+import { useSelector } from "react-redux";
+import { selectAuth } from "../../../features/auth/authSelector";
 
+const AssignmentModal = ({ assignment, setShowModal }) => {
     //get mutation
-    // const [] = use
+    const [addAssignmentMark] = useAddAssignmentMarkMutation();
+
+    //get current user data
+    const { user } = useSelector(selectAuth) || {};
+
+    //form input state
+    const [repoLink, setRepoLink] = useState('');
 
     //function to handle form submit
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const confirmation = window.confirm('Are you sure?');
+        const data = {
+            student_id: user?.id,
+            student_name: user?.name,
+            assignment_id: assignment?.id,
+            title: assignment?.title,
+            createdAt: new Date().toISOString(),
+            totalMark: 100,
+            mark: 0,
+            repo_link: repoLink,
+            status: 'pending'
+        }
 
+        if (confirmation) {
+            addAssignmentMark(data);
+            setShowModal(false);
+        };
     };
 
     return (
@@ -45,7 +72,9 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                                         name="repository_link"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         placeholder=""
-                                        required />
+                                        required
+                                        value={repoLink}
+                                        onChange={(e) => setRepoLink(e.target.value)} />
                                 </div>
 
                                 <button
