@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useUpdateAssignmentMarkMutation } from "../../../features/assignmentMark/assignmentMarkApi";
 
-const AssignmentMarkRow = ({ markData }) => {
-
+const MarkRow = ({ markData }) => {
     //hooks
     const [updateAssignmentMark] = useUpdateAssignmentMarkMutation();
 
@@ -49,4 +48,4 @@ const AssignmentMarkRow = ({ markData }) => {
     );
 };
 
-export default AssignmentMarkRow;
+export default MarkRow;

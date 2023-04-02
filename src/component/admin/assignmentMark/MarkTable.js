@@ -1,8 +1,7 @@
 import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
-import AssignmentMarkRow from './AssignmentMarkRow';
+import MarkRow from './MarkRow';
 
-const AssignmentMarkTable = () => {
-
+const MarkTable = () => {
     //getting the assignment marks
     const { data: marks, isLoading, isError, error } = useGetAssignmentMarksQuery() || {};
 
@@ -16,7 +15,7 @@ const AssignmentMarkTable = () => {
     } else if (!isLoading && !isError && marks?.length === 0) {
         content = <tr><td className="text-center">No marks found!</td></tr>;
     } else if (!isLoading && !isError && marks?.length > 0) {
-        content = marks.map(markData => <AssignmentMarkRow key={markData.id} markData={markData} />)
+        content = marks.map(markData => <MarkRow key={markData.id} markData={markData} />)
     };
 
     return (
@@ -38,4 +37,4 @@ const AssignmentMarkTable = () => {
     );
 };
 
-export default AssignmentMarkTable;
+export default MarkTable;

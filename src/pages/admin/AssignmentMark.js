@@ -1,4 +1,4 @@
-import AssignmentMarkTable from "../../component/admin/assignmentMark/AssignmentMarkTable";
+import MarkTable from "../../component/admin/assignmentMark/MarkTable";
 import Status from "../../component/admin/assignmentMark/Status";
 
 const AssignmentMark = () => {
@@ -8,7 +8,7 @@ const AssignmentMark = () => {
                 <div className="px-3 py-20 bg-opacity-10">
                     <Status />
                     <div className="overflow-x-auto mt-4">
-                        <AssignmentMarkTable />
+                        <MarkTable />
                     </div>
                 </div>
             </div>
