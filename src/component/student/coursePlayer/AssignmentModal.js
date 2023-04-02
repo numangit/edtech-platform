@@ -16,7 +16,7 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        const confirmation = window.confirm('Are you sure?');
+        const confirmation = window.confirm('Do you agree to submit?');
         const data = {
             student_id: user?.id,
             student_name: user?.name,
@@ -68,10 +68,9 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                                     <p>যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন</p>
                                     <input
                                         id="assignment"
-                                        type="text"
+                                        type="url"
                                         name="repository_link"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
-                                        placeholder=""
                                         required
                                         value={repoLink}
                                         onChange={(e) => setRepoLink(e.target.value)} />
