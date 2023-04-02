@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useGetVideoQuery } from '../../../features/videos/videoApi';
 import { Link, useParams } from 'react-router-dom';
 import { useGetQuizByVideoIdQuery } from '../../../features/quiz/quizApi';
 import { useGetAssignmentByVideoIdQuery } from '../../../features/assignment/assignmentApi';
+import AssignmentModal from './AssignmentModal';
 
 const VideoPlayer = () => {
 
     //getting the video id from url 
     const { id } = useParams();
+
+    //toggle state
+    const [showModal, setShowModal] = useState(false);
 
     //getting video data
     const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
@@ -55,12 +59,18 @@ const VideoPlayer = () => {
                         <div className="flex gap-4">
                             {
                                 assignments?.length !== 0
-                                && <Link to="/"
+                                && <button
+                                    onClick={() => setShowModal(true)}
                                     className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
                                     এসাইনমেন্ট
-                                </Link>
+                                </button>
                             }
+                            {
+                                //modal
+                                showModal
+                                && <AssignmentModal assignment={assignments[0]} setShowModal={setShowModal} />
 
+                            }
                             {
                                 quizzes?.length !== 0
                                 && <Link to={`/quiz/${id}`}
