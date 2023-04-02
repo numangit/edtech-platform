@@ -1,5 +1,12 @@
 const AssignmentModal = ({ assignment, setShowModal }) => {
-    const { id, title } = assignment;
+
+    //get mutation
+    // const [] = use
+
+    //function to handle form submit
+    const handleSubmit = () => {
+
+    };
 
     return (
         <>
@@ -7,7 +14,6 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                 className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm"
             >
                 <div className="relative my-6 w-1/3">
-                    {/*content*/}
                     <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-slate-900 outline-none focus:outline-none p-3">
                         {/*header*/}
                         <div className="flex items-start justify-between rounded-t">
@@ -27,19 +33,17 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                                 <span className="text-sky-500 ">এসাইনমেন্ট</span> জমা দিন
                             </h3>
 
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="text-slate-500 text-sm leading-relaxed">
-                                    <p className="">
+                                    <p>
                                         গিটহাব রিপোসিটরি লিঙ্ক <span className="text-red-500">*</span>
                                     </p>
-                                    <p className="">
-                                        যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন
-                                    </p>
+                                    <p>যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন</p>
                                     <input
                                         id="assignment"
                                         type="text"
                                         name="repository_link"
-                                        className="p-2 text-black bg-slate-800 w-full rounded-md my-2 "
+                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         placeholder=""
                                         required />
                                 </div>
