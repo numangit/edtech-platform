@@ -6,11 +6,11 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
             <div
                 className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm"
             >
-                <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                <div className="relative my-6 w-1/3">
                     {/*content*/}
-                    <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-slate-900 outline-none focus:outline-none">
+                    <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-slate-900 outline-none focus:outline-none p-3">
                         {/*header*/}
-                        <div className="flex items-start justify-between px-5 py-2 rounded-t">
+                        <div className="flex items-start justify-between rounded-t">
                             <button
                                 className="p-1 ml-auto bg-transparent border-0 text-slate-300 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                 onClick={() => setShowModal(false)}
@@ -21,31 +21,36 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                             </button>
                         </div>
                         {/*body*/}
-                        <div className="relative p-6 flex-auto">
-                            <h3 className="text-3xl font-semibold">
+                        <div className="relative mx-2 my-1 flex-auto">
+
+                            <h3 className="text-xl font-semibold mb-4">
                                 <span className="text-sky-500 ">এসাইনমেন্ট</span> জমা দিন
                             </h3>
-                            <p className="my-4 text-slate-500 text-lg leading-relaxed">
-                                গিটহাব রিপোসিটরি লিঙ্ক <span className="text-red">*</span>
-                            </p>
-                            <p className="my-4 text-slate-500 text-lg leading-relaxed">যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন</p>
-                        </div>
-                        {/*footer*/}
-                        <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                            <button
-                                className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                type="button"
-                                onClick={() => setShowModal(false)}
-                            >
-                                Close
-                            </button>
-                            <button
-                                className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                type="button"
-                                onClick={() => setShowModal(false)}
-                            >
-                                Save Changes
-                            </button>
+
+                            <form>
+                                <div className="text-slate-500 text-sm leading-relaxed">
+                                    <p className="">
+                                        গিটহাব রিপোসিটরি লিঙ্ক <span className="text-red-500">*</span>
+                                    </p>
+                                    <p className="">
+                                        যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন
+                                    </p>
+                                    <input
+                                        id="assignment"
+                                        type="text"
+                                        name="repository_link"
+                                        className="p-2 text-black bg-slate-800 w-full rounded-md my-2 "
+                                        placeholder=""
+                                        required />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    className="border border-cyan items-center text-white bg-sky-500 px-4 py-2 rounded-full text-sm hover:bg-cyan hover:text-white mr-1 mb-1 ease-linear transition-all duration-150 mt-4"
+                                >
+                                    এসাইনমেন্ট জমা দিন
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
