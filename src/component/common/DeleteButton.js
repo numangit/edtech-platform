@@ -1,18 +1,12 @@
-import React from 'react';
-import { useDeleteVideoMutation } from '../../../features/videos/videoApi';
-
 const DeleteButton = ({ id, mutation }) => {
 
-    //getting delete mutation
-    const [deleteVideo] = useDeleteVideoMutation();
-
     //function to handle delete
-    const handleDelete = (id) => {
-        deleteVideo(id);
+    const handleDelete = (paramId) => {
+        mutation(paramId);
     };
 
     return (
-        <button onClick={() => handleDelete(videoId)}>
+        <button onClick={() => handleDelete(id)}>
             <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                 className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all">
                 <path strokeLinecap="round" strokeLinejoin="round"

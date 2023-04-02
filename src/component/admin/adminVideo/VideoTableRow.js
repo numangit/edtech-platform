@@ -1,7 +1,10 @@
-import React from 'react';
-import VideoDeleteButton from './VideoDeleteButton';
+import { useDeleteVideoMutation } from '../../../features/videos/videoApi';
+import DeleteButton from '../../common/DeleteButton';
 
 const VideoTableRow = ({ video }) => {
+
+    //getting delete mutation
+    const [deleteVideo] = useDeleteVideoMutation();
 
     //destructuring video info
     const { id, title, description } = video || {};
@@ -11,7 +14,7 @@ const VideoTableRow = ({ video }) => {
             <td className="table-td">{title}</td>
             <td className="table-td">{description.substring(0, 50)}...</td>
             <td className="table-td flex gap-x-2">
-                <VideoDeleteButton videoId={id} />
+                <DeleteButton id={id} mutation={deleteVideo} />
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                     className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all">
                     <path strokeLinecap="round" strokeLinejoin="round"
