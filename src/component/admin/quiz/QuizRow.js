@@ -1,8 +1,29 @@
-const QuizRow = () => {
+import { useDeleteQuizMutation } from "../../../features/quiz/quizApi";
+
+const QuizRow = ({ quiz }) => {
+
+    //getting delete mutation
+    const [deletequiz] = useDeleteQuizMutation();
+
+    //destructuring quiz info
+    const { id, question, video_title } = quiz || {};
+
     return (
         <tr>
-            <td className="table-td">Quiz 1 - JavaScript Interview Questions</td>
-            <td className="table-td">Debounce Function in JavaScript - JavaScript Job...</td>
+            <td className="table-td">Quiz {id} -
+                {
+                    question.length > 60
+                        ? question.substring(0, 60) + '..'
+                        : question
+                }
+            </td>
+            <td className="table-td">
+                {
+                    video_title.length > 60
+                        ? video_title.substring(0, 60) + '..'
+                        : video_title
+                }
+            </td>
             <td className="table-td flex gap-x-2 justify-center">
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                     className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all">
