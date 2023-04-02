@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import logo from '../../assets/image/learningportal.svg';
 import { useLoginMutation } from '../../features/auth/authApi';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
 
@@ -78,9 +78,9 @@ const AdminLogin = () => {
                     }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">
-                            <a href="#" className="font-medium text-violet-600 hover:text-violet-500">
+                            <Link to="/admin/login" className="font-medium text-violet-600 hover:text-violet-500">
                                 Forgot your password?
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
@@ -90,6 +90,13 @@ const AdminLogin = () => {
                             Sign in
                         </button>
                     </div>
+
+                    <Link to="/login">
+                        <button disabled={isLoading} type="submit"
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-slate-900 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 my-3">
+                            Student Login
+                        </button>
+                    </Link>
                 </form>
             </div>
         </section>
