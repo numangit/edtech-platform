@@ -1,7 +1,6 @@
-import React from 'react';
-import Assignment from './Assignment';
+import AssignmentRow from './AssignmentRow';
 
-const Assignments = () => {
+const AssignmentTable = () => {
     return (
         <div className="overflow-x-auto mt-4">
             <table className="divide-y-1 text-base divide-gray-600 w-full">
@@ -15,11 +14,11 @@ const Assignments = () => {
                 </thead>
 
                 <tbody className="divide-y divide-slate-600/50">
-                    <Assignment />
+                    <AssignmentRow />
                 </tbody>
             </table>
         </div>
     );
 };
 
-export default Assignments;
+export default AssignmentTable;

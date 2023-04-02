@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Assignment = () => {
+const AssignmentRow = () => {
     return (
         <tr>
             <td className="table-td">Assignment 1 - Scoreboard Application</td>
@@ -23,4 +21,4 @@ const Assignment = () => {
     );
 };
 
-export default Assignment;
+export default AssignmentRow;

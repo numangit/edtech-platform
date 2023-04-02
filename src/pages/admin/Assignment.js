@@ -1,4 +1,4 @@
-import Assignments from "../../component/admin/assignment/Assignments";
+import AssignmentTable from "../../component/admin/assignment/AssignmentTable";
 
 const Assignment = () => {
     return (
@@ -8,7 +8,7 @@ const Assignment = () => {
                     <div className="w-full flex">
                         <button className="btn ml-auto">Add Assignment</button>
                     </div>
-                    <Assignments />
+                    <AssignmentTable />
                 </div>
             </div>
         </section>
