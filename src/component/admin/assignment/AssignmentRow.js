@@ -1,9 +1,13 @@
-const AssignmentRow = () => {
+const AssignmentRow = ({ assignment }) => {
+
+    //destructuring assignment info
+    const { id, title, totalMark, video_title } = assignment || {};
+
     return (
         <tr>
-            <td className="table-td">Assignment 1 - Scoreboard Application</td>
-            <td className="table-td">JavaScript Bangla Tutorial | JS AJAX | XMLHttp</td>
-            <td className="table-td">100</td>
+            <td className="table-td">{title}</td>
+            <td className="table-td">{video_title}</td>
+            <td className="table-td">{totalMark}</td>
             <td className="table-td flex gap-x-2">
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor"
                     className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all">
