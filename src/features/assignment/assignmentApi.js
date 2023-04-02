@@ -14,5 +14,6 @@ export const assignmentApi = apiSlice.injectEndpoints({
 })
 
 export const {
+    useGetAssignmentsQuery,
     useGetAssignmentByVideoIdQuery
 } = assignmentApi;
