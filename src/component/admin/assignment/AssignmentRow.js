@@ -1,9 +1,10 @@
+import { useDeleteAssignmentMutation } from "../../../features/assignment/assignmentApi";
 import DeleteButton from "../../common/DeleteButton";
 
 const AssignmentRow = ({ assignment }) => {
 
     //getting delete mutation
-    const [deleteAssignment] = useDeleteVideoMutation();
+    const [deleteAssignment] = useDeleteAssignmentMutation();
 
     //destructuring assignment info
     const { id, title, totalMark, video_title } = assignment || {};
