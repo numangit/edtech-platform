@@ -10,9 +10,12 @@ export default function useAuthCheck() {
     const [userLoggedIn, setUserLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    //code to set auth info from local storage if available
     useEffect(() => {
         setIsLoading(true);
-        const userInfo = localStorage?.getItem('authInfo'); //get authInfo from local storage
+
+        //get authInfo from local storage
+        const userInfo = localStorage?.getItem('authInfo');
 
         if (userInfo) {
             const authInfo = JSON.parse(userInfo);

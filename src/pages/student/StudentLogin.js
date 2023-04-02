@@ -5,9 +5,10 @@ import { useLoginMutation } from "../../features/auth/authApi";
 
 const StudentLogin = () => {
 
-    //hooks
-    const [login, { isLoading, isError, error }] = useLoginMutation();
     const navigate = useNavigate();
+
+    //getting login mutation
+    const [login, { isLoading, isError, error }] = useLoginMutation();
 
     //input states
     const [email, setEmail] = useState('');

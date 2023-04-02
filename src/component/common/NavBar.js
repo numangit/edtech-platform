@@ -6,10 +6,8 @@ import { selectAuth } from '../../features/auth/authSelector';
 
 const NavBar = () => {
 
-    //hooks
+    //getting current user info
     const { user } = useSelector(selectAuth) || {};
-
-    //destructuring user info
     const { name, role } = user || {};
 
     return (

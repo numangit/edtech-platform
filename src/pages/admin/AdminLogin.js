@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminLogin = () => {
 
-    //hooks
-    const [login, { isLoading, isError, error }] = useLoginMutation();
     const navigate = useNavigate();
+
+    //getting login mutation
+    const [login, { isLoading, isError, error }] = useLoginMutation();
 
     //input states
     const [email, setEmail] = useState('');

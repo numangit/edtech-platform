@@ -3,9 +3,12 @@ import { selectAuth } from "../../features/auth/authSelector";
 import { Navigate, useLocation } from "react-router-dom";
 
 const StudentRoute = ({ children }) => {
-    //hooks
-    const { user } = useSelector(selectAuth) || {};
+    //getting current router
     const location = useLocation();
+
+    //getting current user info
+    const { user } = useSelector(selectAuth) || {};
+
     // const user = {role:"student"};
     console.log(user);
 

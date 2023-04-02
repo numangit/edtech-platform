@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useUpdateAssignmentMarkMutation } from "../../../features/assignmentMark/assignmentMarkApi";
 
 const MarkRow = ({ markData }) => {
-    //hooks
+    //getting mutation
     const [updateAssignmentMark] = useUpdateAssignmentMarkMutation();
 
     //input state
