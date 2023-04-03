@@ -9,10 +9,19 @@ export const quizMarkApi = apiSlice.injectEndpoints({
         getQuizMark: builder.query({
             query: (id) => ({ url: `/quizMark?student_id_like=${id}` })
         }),
+
+        addQuizMark: builder.mutation({
+            query: (data) => ({
+                url: "/quizMark",
+                method: 'POST',
+                body: data
+            }),
+        }),
     })
 })
 
 export const {
     useGetQuizMarkQuery,
-    useGetQuizMarksQuery
+    useGetQuizMarksQuery,
+    useAddQuizMarkMutation
 } = quizMarkApi;
