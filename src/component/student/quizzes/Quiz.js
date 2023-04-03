@@ -6,7 +6,7 @@ const Quiz = ({ quiz, index }) => {
     const { id, question, options } = quiz || {};
 
     return (
-        <div className="quiz">
+        <div className="quiz my-8">
             <h4 className="question">Quiz {index + 1} - {question}</h4>
             <div className="quizOptions">
                 {

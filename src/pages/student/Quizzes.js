@@ -6,10 +6,7 @@ const Quizzes = () => {
         <section className="py-6 bg-primary">
             <div className="mx-auto max-w-7xl px-5 lg:px-0">
                 <QuizHeader />
-
-                <div className="space-y-8 ">
-                    <QuizForm />
-                </div>
+                <QuizForm />
             </div>
         </section>
     );

@@ -22,12 +22,14 @@ const QuizForm = () => {
     };
 
     return (
-        <form>
-            {content}
-            <button
-                className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">Submit
-            </button>
-        </form>
+        <div className="space-y-8 ">
+            <form>
+                {content}
+                <button
+                    className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">Submit
+                </button>
+            </form>
+        </div>
     );
 };
 
