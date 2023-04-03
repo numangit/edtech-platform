@@ -8,7 +8,7 @@ const Quiz = ({ quiz, index }) => {
     return (
         <div className="quiz">
             <h4 className="question">Quiz {index + 1} - {question}</h4>
-            <form className="quizOptions">
+            <div className="quizOptions">
                 {
                     options?.map(option => <label
                         key={option?.id}
@@ -17,7 +17,7 @@ const Quiz = ({ quiz, index }) => {
                         {option?.option}
                     </label>)
                 }
-            </form>
+            </div>
         </div>
     );
 };
