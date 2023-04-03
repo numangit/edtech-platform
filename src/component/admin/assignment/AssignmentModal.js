@@ -1,4 +1,10 @@
+import { useGetVideosQuery } from "../../../features/videos/videoApi";
+
 const AssignmentModal = ({ setShowModal }) => {
+
+    //getting the videos
+    const { data: videos } = useGetVideosQuery() || {};
+
     return (
         <>
             <div
@@ -21,13 +27,26 @@ const AssignmentModal = ({ setShowModal }) => {
                         <div className="relative mx-2 my-1 flex-auto">
 
                             <h3 className="text-xl font-semibold mb-4">
-                                Add <span className="text-sky-500 ">Video</span>
+                                Add <span className="text-sky-500 ">Assignment</span>
                             </h3>
 
                             {/* <form onSubmit={handleSubmit}> */}
                             <form>
                                 <div className="my-1">
-                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Title</label>
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Select Video</label>
+                                    <select
+                                        name="video_title"
+                                        id="video_title"
+                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                    >
+                                        <option hidden defaultValue>select</option>
+                                        {
+                                            videos?.map((video) => <option key={video?.id} value={JSON.stringify(video)}>{video?.title}</option>)
+                                        }
+                                    </select>
+                                </div>
+                                <div className="my-1">
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Assignment Title</label>
                                     <input
                                         id="title"
                                         type="text"
@@ -39,54 +58,15 @@ const AssignmentModal = ({ setShowModal }) => {
                                     />
                                 </div>
                                 <div className="my-1">
-                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">URL</label>
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Total Mark</label>
                                     <input
-                                        id="url"
-                                        type="url"
-                                        name="url"
+                                        id="mark"
+                                        type="number"
+                                        name="mark"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
                                     // value={url}
                                     // onChange={(e) => setUrl(e.target.value)}
-                                    />
-                                </div>
-                                <div className="flex my-1">
-                                    <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Duration</label>
-                                        <input
-                                            id="duration"
-                                            type="text"
-                                            name="duration"
-                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
-                                            required
-                                        // value={duration}
-                                        // onChange={(e) => setDuration(e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Views</label>
-                                        <input
-                                            id="views"
-                                            type="text"
-                                            name="views"
-                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
-                                            required
-                                        // value={views}
-                                        // onChange={(e) => setViews(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="my-1">
-                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Description</label>
-                                    <textarea
-                                        id="description"
-                                        type="text"
-                                        name="description"
-                                        className="w-full p-2 text-white bg-slate-800 rounded-md my-2 focus:outline-none"
-                                        rows="4"
-                                        required
-                                    // value={description}
-                                    // onChange={(e) => setDescription(e.target.value)}
                                     />
                                 </div>
                                 <div className="flex justify-end">
