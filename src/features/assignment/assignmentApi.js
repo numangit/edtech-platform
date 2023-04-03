@@ -17,6 +17,18 @@ export const assignmentApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+
+            // adding pessimistically
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: addedAssignment } = await queryFulfilled;
+                    dispatch(
+                        apiSlice.util.updateQueryData('getAssignments', undefined, (draft) => {
+                            draft.push(addedAssignment);
+                        })
+                    );
+                } catch (err) { }
+            },
         }),
 
         deleteAssignment: builder.mutation({
