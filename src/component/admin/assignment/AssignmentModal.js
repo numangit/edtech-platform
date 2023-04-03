@@ -1,28 +1,33 @@
 import { useState } from "react";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
+import { useAddAssignmentMutation } from "../../../features/assignment/assignmentApi";
 
 const AssignmentModal = ({ setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
 
+    //get mutation
+    const [addAssignment] = useAddAssignmentMutation();
+
     //form input states
     const [title, setTitle] = useState('');
     const [video, setVideo] = useState('');
     const [totalMark, setTotalMark] = useState('');
 
-    //assignment info
-    const data = {
-        title,
-        totalMark,
-        video_id: video.id,
-        video_title: video.title
-    };
-
     //function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
+        const parsedVideo = JSON.parse(video);
+        const data = {
+            title,
+            totalMark,
+            video_id: parsedVideo.id,
+            video_title: parsedVideo.title
+        };
+        const confirmation = window.confirm("Are you sure?");
+        confirmation && addAssignment(data);
+        confirmation && setShowModal(false);
     };
 
     return (
@@ -57,8 +62,8 @@ const AssignmentModal = ({ setShowModal }) => {
                                         name="video"
                                         id="video"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
-                                        onChange={(e) => setVideo(JSON.parse(e.target.value))}
                                         value={video}
+                                        onChange={(e) => setVideo(e.target.value)}
                                     >
                                         <option hidden defaultValue>select</option>
                                         {
