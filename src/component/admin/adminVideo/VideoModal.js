@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useAddVideoMutation } from "../../../features/videos/videoApi";
 
 const VideoModal = ({ setShowModal }) => {
+
+    //get mutation
+    const [addVideo] = useAddVideoMutation();
 
     //form input states
     const [title, setTitle] = useState('');
@@ -23,6 +27,9 @@ const VideoModal = ({ setShowModal }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(data);
+        const confirmation = window.confirm("Do you agree to add video?");
+        confirmation && addVideo(data);
+        confirmation && setShowModal(false);
     };
 
     return (
@@ -64,18 +71,6 @@ const VideoModal = ({ setShowModal }) => {
                                     />
                                 </div>
                                 <div className="my-1">
-                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Description</label>
-                                    <input
-                                        id="description"
-                                        type="text"
-                                        name="description"
-                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
-                                        required
-                                        value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    />
-                                </div>
-                                <div className="my-1">
                                     <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">URL</label>
                                     <input
                                         id="url"
@@ -112,6 +107,19 @@ const VideoModal = ({ setShowModal }) => {
                                             onChange={(e) => setViews(e.target.value)}
                                         />
                                     </div>
+                                </div>
+                                <div className="my-1">
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Description</label>
+                                    <textarea
+                                        id="description"
+                                        type="text"
+                                        name="description"
+                                        className="w-full p-2 text-white bg-slate-800 rounded-md my-2 focus:outline-none"
+                                        rows="4"
+                                        required
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
                                 </div>
                                 <div className="flex justify-end">
                                     <button

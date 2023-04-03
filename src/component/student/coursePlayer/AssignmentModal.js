@@ -13,26 +13,25 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
     //form input state
     const [repoLink, setRepoLink] = useState('');
 
+    //assignment data
+    const data = {
+        student_id: user?.id,
+        student_name: user?.name,
+        assignment_id: assignment?.id,
+        title: assignment?.title,
+        createdAt: new Date().toISOString(),
+        totalMark: 100,
+        mark: 0,
+        repo_link: repoLink,
+        status: 'pending'
+    };
+
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         const confirmation = window.confirm('Do you agree to submit?');
-        const data = {
-            student_id: user?.id,
-            student_name: user?.name,
-            assignment_id: assignment?.id,
-            title: assignment?.title,
-            createdAt: new Date().toISOString(),
-            totalMark: 100,
-            mark: 0,
-            repo_link: repoLink,
-            status: 'pending'
-        }
-
-        if (confirmation) {
-            addAssignmentMark(data);
-            setShowModal(false);
-        };
+        confirmation && addAssignmentMark(data);
+        confirmation && setShowModal(false);
     };
 
     return (
