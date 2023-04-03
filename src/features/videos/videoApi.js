@@ -17,6 +17,7 @@ export const videoApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+            // adding pessimistically
             async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                 try {
                     const { data: addedVideo } = await queryFulfilled;

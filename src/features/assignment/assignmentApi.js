@@ -11,6 +11,14 @@ export const assignmentApi = apiSlice.injectEndpoints({
             query: (id) => ({ url: `/assignments?video_id_like=${id}` })
         }),
 
+        addAssignment: builder.mutation({
+            query: (data) => ({
+                url: "/assignments",
+                method: 'POST',
+                body: data
+            }),
+        }),
+
         deleteAssignment: builder.mutation({
 
             query: (id) => ({
@@ -36,5 +44,6 @@ export const assignmentApi = apiSlice.injectEndpoints({
 export const {
     useGetAssignmentsQuery,
     useGetAssignmentByVideoIdQuery,
+    useAddAssignmentMutation,
     useDeleteAssignmentMutation
 } = assignmentApi;
