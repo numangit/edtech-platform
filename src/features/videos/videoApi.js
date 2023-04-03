@@ -17,6 +17,16 @@ export const videoApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: addedVideo } = await queryFulfilled;
+                    dispatch(
+                        apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
+                            draft.push(addedVideo);
+                        })
+                    );
+                } catch (err) { }
+            },
         }),
 
         deleteVideo: builder.mutation({
