@@ -1,6 +1,6 @@
 const VideoModal = ({ setShowModal }) => {
 
-
+    //form states
 
     return (
         <>
@@ -24,33 +24,82 @@ const VideoModal = ({ setShowModal }) => {
                         <div className="relative mx-2 my-1 flex-auto">
 
                             <h3 className="text-xl font-semibold mb-4">
-                                <span className="text-sky-500 ">এসাইনমেন্ট</span> জমা দিন
+                                Add <span className="text-sky-500 ">Video</span>
                             </h3>
 
                             {/* <form onSubmit={handleSubmit}> */}
                             <form>
-                                <div className="text-slate-500 text-sm leading-relaxed">
-                                    <p>
-                                        গিটহাব রিপোসিটরি লিঙ্ক <span className="text-red-500">*</span>
-                                    </p>
-                                    <p>যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন</p>
+                                <div className="my-1">
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Title</label>
                                     <input
-                                        id="assignment"
-                                        type="url"
-                                        name="repository_link"
+                                        id="title"
+                                        type="text"
+                                        name="title"
+                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
+                                        required
+                                    // value={repoLink}
+                                    // onChange={(e) => setRepoLink(e.target.value)}
+                                    />
+                                </div>
+                                <div className="my-1">
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Description</label>
+                                    <input
+                                        id="description"
+                                        type="text"
+                                        name="description"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
                                     // value={repoLink}
                                     // onChange={(e) => setRepoLink(e.target.value)} 
                                     />
                                 </div>
+                                <div className="my-1">
+                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">URL</label>
+                                    <input
+                                        id="url"
+                                        type="url"
+                                        name="url"
+                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
+                                        required
+                                    // value={repoLink}
+                                    // onChange={(e) => setRepoLink(e.target.value)} 
+                                    />
+                                </div>
+                                <div className="flex my-1">
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Duration</label>
+                                        <input
+                                            id="duration"
+                                            type="text"
+                                            name="duration"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
+                                            required
+                                        // value={repoLink}
+                                        // onChange={(e) => setRepoLink(e.target.value)} 
+                                        />
+                                    </div>
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Views</label>
+                                        <input
+                                            id="views"
+                                            type="text"
+                                            name="views"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
+                                            required
+                                        // value={repoLink}
+                                        // onChange={(e) => setRepoLink(e.target.value)} 
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex justify-end">
+                                    <button
+                                        type="submit"
+                                        className="border border-cyan items-center text-white bg-sky-500 px-4 py-2 rounded-full text-base font-semibold hover:bg-cyan hover:text-white mr-1 mb-1 ease-linear transition-all duration-150 mt-4"
+                                    >
+                                        Done
+                                    </button>
+                                </div>
 
-                                <button
-                                    type="submit"
-                                    className="border border-cyan items-center text-white bg-sky-500 px-4 py-2 rounded-full text-sm hover:bg-cyan hover:text-white mr-1 mb-1 ease-linear transition-all duration-150 mt-4"
-                                >
-                                    এসাইনমেন্ট জমা দিন
-                                </button>
                             </form>
                         </div>
                     </div>

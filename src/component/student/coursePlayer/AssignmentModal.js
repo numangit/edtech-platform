@@ -67,9 +67,9 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                                     </p>
                                     <p>যে রিপোসিটরি লিঙ্কটি আপনি গিটহাব ক্লাসরুম থেকে পেয়েছেন</p>
                                     <input
-                                        id="assignment"
+                                        id="repoLink"
                                         type="url"
-                                        name="repository_link"
+                                        name="repoLink"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
                                         value={repoLink}
