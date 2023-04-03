@@ -1,9 +1,29 @@
+import { useState } from "react";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
 
 const AssignmentModal = ({ setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
+
+    //form input states
+    const [title, setTitle] = useState('');
+    const [video, setVideo] = useState('');
+    const [totalMark, setTotalMark] = useState('');
+
+    //assignment info
+    const data = {
+        title,
+        totalMark,
+        video_id: video.id,
+        video_title: video.title
+    };
+
+    //function to handle submit
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+    };
 
     return (
         <>
@@ -30,14 +50,15 @@ const AssignmentModal = ({ setShowModal }) => {
                                 Add <span className="text-sky-500 ">Assignment</span>
                             </h3>
 
-                            {/* <form onSubmit={handleSubmit}> */}
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="my-1">
                                     <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Select Video</label>
                                     <select
-                                        name="video_title"
-                                        id="video_title"
+                                        name="video"
+                                        id="video"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                        onChange={(e) => setVideo(JSON.parse(e.target.value))}
+                                        value={video}
                                     >
                                         <option hidden defaultValue>select</option>
                                         {
@@ -53,8 +74,8 @@ const AssignmentModal = ({ setShowModal }) => {
                                         name="title"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
-                                    // value={title}
-                                    // onChange={(e) => setTitle(e.target.value)}
+                                        value={title}
+                                        onChange={(e) => setTitle(e.target.value)}
                                     />
                                 </div>
                                 <div className="my-1">
@@ -65,8 +86,8 @@ const AssignmentModal = ({ setShowModal }) => {
                                         name="mark"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
-                                    // value={url}
-                                    // onChange={(e) => setUrl(e.target.value)}
+                                        value={totalMark}
+                                        onChange={(e) => setTotalMark(e.target.value)}
                                     />
                                 </div>
                                 <div className="flex justify-end">
