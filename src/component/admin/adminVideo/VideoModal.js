@@ -1,6 +1,29 @@
+import { useState } from "react";
+
 const VideoModal = ({ setShowModal }) => {
 
-    //form states
+    //form input states
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [url, setUrl] = useState('');
+    const [duration, setDuration] = useState('');
+    const [views, setViews] = useState('');
+
+    //video info
+    const data = {
+        description,
+        duration,
+        title,
+        url,
+        views,
+        createdAt: new Date().toISOString()
+    };
+
+    //function handle submit
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+    };
 
     return (
         <>
@@ -27,8 +50,7 @@ const VideoModal = ({ setShowModal }) => {
                                 Add <span className="text-sky-500 ">Video</span>
                             </h3>
 
-                            {/* <form onSubmit={handleSubmit}> */}
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className="my-1">
                                     <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Title</label>
                                     <input
@@ -37,8 +59,8 @@ const VideoModal = ({ setShowModal }) => {
                                         name="title"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
-                                    // value={repoLink}
-                                    // onChange={(e) => setRepoLink(e.target.value)}
+                                        value={title}
+                                        onChange={(e) => setTitle(e.target.value)}
                                     />
                                 </div>
                                 <div className="my-1">
@@ -49,8 +71,8 @@ const VideoModal = ({ setShowModal }) => {
                                         name="description"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
-                                    // value={repoLink}
-                                    // onChange={(e) => setRepoLink(e.target.value)} 
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
                                     />
                                 </div>
                                 <div className="my-1">
@@ -61,8 +83,8 @@ const VideoModal = ({ setShowModal }) => {
                                         name="url"
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                         required
-                                    // value={repoLink}
-                                    // onChange={(e) => setRepoLink(e.target.value)} 
+                                        value={url}
+                                        onChange={(e) => setUrl(e.target.value)}
                                     />
                                 </div>
                                 <div className="flex my-1">
@@ -74,8 +96,8 @@ const VideoModal = ({ setShowModal }) => {
                                             name="duration"
                                             className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                             required
-                                        // value={repoLink}
-                                        // onChange={(e) => setRepoLink(e.target.value)} 
+                                            value={duration}
+                                            onChange={(e) => setDuration(e.target.value)}
                                         />
                                     </div>
                                     <div className="mx-0.5">
@@ -86,8 +108,8 @@ const VideoModal = ({ setShowModal }) => {
                                             name="views"
                                             className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
                                             required
-                                        // value={repoLink}
-                                        // onChange={(e) => setRepoLink(e.target.value)} 
+                                            value={views}
+                                            onChange={(e) => setViews(e.target.value)}
                                         />
                                     </div>
                                 </div>
