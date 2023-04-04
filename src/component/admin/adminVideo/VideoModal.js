@@ -26,7 +26,6 @@ const VideoModal = ({ setShowModal }) => {
     //function handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         const confirmation = window.confirm("Do you agree to add video?");
         confirmation && addVideo(data);
         confirmation && setShowModal(false);

@@ -17,7 +17,6 @@ const VideoTableRow = ({ video }) => {
             <td className="flex gap-x-2 justify-center text-gray-500">
                 <DeleteButton id={id} mutation={deleteVideo} />
                 <EditVideo id={id} />
-
             </td>
         </tr>
     );

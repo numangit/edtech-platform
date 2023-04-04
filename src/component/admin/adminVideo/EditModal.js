@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAddVideoMutation, useGetVideoQuery } from "../../../features/videos/videoApi";
+import { useEditVideoMutation, useGetVideoQuery } from "../../../features/videos/videoApi";
 
 const EditModal = ({ id, setShowModal }) => {
 
@@ -7,7 +7,7 @@ const EditModal = ({ id, setShowModal }) => {
     const { data: video } = useGetVideoQuery(id) || {};
 
     //get mutation
-    const [addVideo] = useAddVideoMutation();
+    const [editVideo] = useEditVideoMutation();
 
     //form input states
     const [title, setTitle] = useState('');
@@ -16,6 +16,7 @@ const EditModal = ({ id, setShowModal }) => {
     const [duration, setDuration] = useState('');
     const [views, setViews] = useState('');
 
+    //useEffect to get delayed data
     useEffect(() => {
         if (video?.id) {
             setTitle(video.title);
@@ -39,9 +40,8 @@ const EditModal = ({ id, setShowModal }) => {
     //function handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         const confirmation = window.confirm("Do you agree to add video?");
-        confirmation && addVideo(data);
+        confirmation && editVideo({ id, data });
         confirmation && setShowModal(false);
     };
 
