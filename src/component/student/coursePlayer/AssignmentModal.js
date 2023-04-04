@@ -58,7 +58,7 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                             <h3 className="text-xl font-semibold mb-4">
                                 <span className="text-sky-500 ">এসাইনমেন্ট</span> জমা দিন
                             </h3>
-
+                            <p className="text-xl font-semibold mb-4">{assignment?.title}</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="text-slate-500 text-sm leading-relaxed">
                                     <p>
@@ -85,7 +85,7 @@ const AssignmentModal = ({ assignment, setShowModal }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
             <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
     );
