@@ -202,6 +202,34 @@
           "isCorrect": false
         }
       ]
+    },
+    {
+      "question": "How many type of resumes are there?",
+      "video_id": 5,
+      "video_title": "How to write a professional Resume - Resume tips for web developers",
+      "options": [
+        {
+          "id": 1,
+          "option": "10",
+          "isCorrect": true
+        },
+        {
+          "id": 2,
+          "option": "2",
+          "isCorrect": true
+        },
+        {
+          "id": 3,
+          "option": "i dont know, im not sure",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "option": "4",
+          "isCorrect": true
+        }
+      ],
+      "id": 4
     }
   ],
   "assignmentMark": [

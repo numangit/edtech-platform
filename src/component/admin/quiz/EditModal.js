@@ -73,9 +73,8 @@ const EditModal = ({ id, setShowModal }) => {
 
         //confirmation
         const confirmation = window.confirm("Are you sure?");
-        confirmation && console.log(data);
-        // confirmation && editQuiz({ id, data });
-        // confirmation && setShowModal(false);
+        confirmation && editQuiz({ id, data });
+        confirmation && setShowModal(false);
     };
 
     return (
