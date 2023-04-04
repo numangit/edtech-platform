@@ -37,6 +37,20 @@ export const assignmentApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data,
             }),
+
+            // pessimistic update
+            async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: updatedAssignment } = await queryFulfilled;
+                    //update assignments cache
+                    dispatch(apiSlice.util.updateQueryData('getAssignments', undefined, (draft) => {
+                        const AssignmentIndex = draft?.findIndex(Assignment => Assignment?.id === id);
+                        draft[AssignmentIndex] = { ...updatedAssignment };
+                    }),)
+                    //update assignment cache
+                    dispatch(apiSlice.util.updateQueryData('getQuiz', id, (draft) => updatedAssignment));
+                } catch (err) { }
+            },
         }),
 
         deleteAssignment: builder.mutation({
