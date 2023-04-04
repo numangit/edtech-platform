@@ -40,10 +40,12 @@ export const videoApi = apiSlice.injectEndpoints({
             async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
                 try {
                     const { data: updatedVideo } = await queryFulfilled;
+                    //update videos cache
                     dispatch(apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
                         const videoIndex = draft?.findIndex(video => video?.id === id);
                         draft[videoIndex] = { ...updatedVideo };
-                    }),)
+                    }));
+                    //update video cache
                     dispatch(apiSlice.util.updateQueryData('getVideo', id, (draft) => updatedVideo));
                 } catch (err) { }
             },
