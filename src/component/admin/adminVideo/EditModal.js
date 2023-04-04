@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { useAddVideoMutation } from "../../../features/videos/videoApi";
+import { useEffect, useState } from "react";
+import { useAddVideoMutation, useGetVideoQuery } from "../../../features/videos/videoApi";
 
-const EditModal = ({ setShowModal }) => {
+const EditModal = ({ id, setShowModal }) => {
+
+    //get video data
+    const { data: video } = useGetVideoQuery(id) || {};
 
     //get mutation
     const [addVideo] = useAddVideoMutation();
@@ -12,6 +15,16 @@ const EditModal = ({ setShowModal }) => {
     const [url, setUrl] = useState('');
     const [duration, setDuration] = useState('');
     const [views, setViews] = useState('');
+
+    useEffect(() => {
+        if (video?.id) {
+            setTitle(video.title);
+            setDescription(video.description);
+            setUrl(video.url);
+            setDuration(video.duration);
+            setViews(video.views);
+        }
+    }, [video])
 
     //video info
     const data = {

@@ -17,7 +17,7 @@ const EditVideo = ({ id }) => {
             </button>
             {
                 //modal
-                showModal && <EditModal setShowModal={setShowModal} />
+                showModal && <EditModal id={id} setShowModal={setShowModal} />
             }
         </>
     );
