@@ -124,7 +124,7 @@ const VideoModal = ({ setShowModal }) => {
                                         type="submit"
                                         className="border border-cyan items-center text-white bg-sky-500 px-4 py-2 rounded-full text-base font-semibold hover:bg-cyan hover:text-white mr-1 mb-1 ease-linear transition-all duration-150 mt-4"
                                     >
-                                        Done
+                                        Add Video
                                     </button>
                                 </div>
                             </form>
