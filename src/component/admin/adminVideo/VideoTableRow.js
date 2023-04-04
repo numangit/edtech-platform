@@ -14,9 +14,9 @@ const VideoTableRow = ({ video }) => {
         <tr>
             <td className="table-td">{title}</td>
             <td className="table-td">{description.substring(0, 50)}...</td>
-            <td className="table-td flex gap-x-2">
+            <td className="flex gap-x-2 justify-center text-gray-500">
                 <DeleteButton id={id} mutation={deleteVideo} />
-                <EditVideo />
+                <EditVideo id={id} />
 
             </td>
         </tr>

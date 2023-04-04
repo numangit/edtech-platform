@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import EditModal from './EditModal';
 
-const EditVideo = () => {
+const EditVideo = ({ id }) => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
@@ -16,8 +17,7 @@ const EditVideo = () => {
             </button>
             {
                 //modal
-                showModal
-                && <EditVideo setShowModal={setShowModal} />
+                showModal && <EditModal setShowModal={setShowModal} />
             }
         </>
     );
