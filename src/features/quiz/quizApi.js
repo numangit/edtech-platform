@@ -41,6 +41,20 @@ export const quizApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data,
             }),
+
+            // pessimistic update
+            async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: updatedQuiz } = await queryFulfilled;
+                    //update quizzes cache
+                    dispatch(apiSlice.util.updateQueryData('getQuizzes', undefined, (draft) => {
+                        const QuizIndex = draft?.findIndex(quiz => quiz?.id === id);
+                        draft[QuizIndex] = { ...updatedQuiz };
+                    }),)
+                    //update quiz cache
+                    dispatch(apiSlice.util.updateQueryData('getQuiz', id, (draft) => updatedQuiz));
+                } catch (err) { }
+            },
         }),
 
         deleteQuiz: builder.mutation({
