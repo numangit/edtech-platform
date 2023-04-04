@@ -13,10 +13,10 @@ const QuizModal = ({ setShowModal }) => {
     //form input states
     const [question, setQuestion] = useState('');
     const [video, setVideo] = useState('');
-    const [option1, setOption1] = useState({ id: 1, option: "", isCorrect: null });
-    const [option2, setOption2] = useState({ id: 2, option: "", isCorrect: null });
-    const [option3, setOption3] = useState({ id: 3, option: "", isCorrect: null });
-    const [option4, setOption4] = useState({ id: 4, option: "", isCorrect: null });
+    const [option1, setOption1] = useState({ id: 1, option: "", isCorrect: false });
+    const [option2, setOption2] = useState({ id: 2, option: "", isCorrect: false });
+    const [option3, setOption3] = useState({ id: 3, option: "", isCorrect: false });
+    const [option4, setOption4] = useState({ id: 4, option: "", isCorrect: false });
 
 
     //function to handle submit
@@ -102,7 +102,7 @@ const QuizModal = ({ setShowModal }) => {
                                         />
                                     </div>
                                     <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Status</label>
                                         <select
                                             name="video"
                                             id="video"
@@ -130,7 +130,7 @@ const QuizModal = ({ setShowModal }) => {
                                         />
                                     </div>
                                     <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Status</label>
                                         <select
                                             name="video"
                                             id="video"
@@ -158,7 +158,7 @@ const QuizModal = ({ setShowModal }) => {
                                         />
                                     </div>
                                     <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Status</label>
                                         <select
                                             name="video"
                                             id="video"
@@ -186,7 +186,7 @@ const QuizModal = ({ setShowModal }) => {
                                         />
                                     </div>
                                     <div className="mx-0.5">
-                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Status</label>
                                         <select
                                             name="video"
                                             id="video"
@@ -194,8 +194,8 @@ const QuizModal = ({ setShowModal }) => {
                                             onChange={(e) => setOption4({ ...option4, isCorrect: JSON.parse(e.target.value) })}
                                         >
                                             <option hidden defaultValue>select</option>
-                                            <option value={true}>correct</option>
-                                            <option value={false}>wrong</option>
+                                            <option value={true}>Yes</option>
+                                            <option value={false}>No</option>
                                         </select>
                                     </div>
                                 </div>
