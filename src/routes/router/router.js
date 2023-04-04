@@ -13,30 +13,31 @@ import AdminDashboard from "../../pages/admin/AdminDashboard";
 import AssignmentMark from "../../pages/admin/AssignmentMark";
 import Assignment from "../../pages/admin/Assignment";
 import Quizzes from "../../pages/student/Quizzes";
+import StudentRoute from "../StudentRoute/StudentRoute";
 
 export const router = createBrowserRouter([
     //student routes
     {
         path: '/',
-        element: <Main />,
+        element: <StudentRoute><Main /></StudentRoute>,
         children: [
             {
                 path: '/',
-                element: <CourseLayout />,
+                element: <StudentRoute><CourseLayout /></StudentRoute>,
                 children: [
                     {
                         path: '/videos/:id',
-                        element: <VideoPlayer />
+                        element: <StudentRoute><VideoPlayer /></StudentRoute>
                     }
                 ]
             },
             {
                 path: '/leaderboard',
-                element: <Leaderboard />
+                element: <StudentRoute><Leaderboard /></StudentRoute>
             },
             {
                 path: '/quiz/:id',
-                element: <Quizzes />
+                element: <StudentRoute><Quizzes /></StudentRoute>
             }
         ]
     },

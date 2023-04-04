@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectAuth } from "../../features/auth/authSelector";
 import { Navigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const StudentRoute = ({ children }) => {
     //getting current router
@@ -8,9 +9,12 @@ const StudentRoute = ({ children }) => {
 
     //getting current user info
     const { user } = useSelector(selectAuth) || {};
-
+    console.log("outside", user.role);
     // const user = {role:"student"};
-    console.log(user);
+    useEffect(() => {
+        console.log(user.role);
+
+    }, [user])
 
     if (user?.role === "student") {
         return children;
