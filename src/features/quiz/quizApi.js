@@ -7,6 +7,10 @@ export const quizApi = apiSlice.injectEndpoints({
             query: () => ({ url: '/quizzes' })
         }),
 
+        getQuiz: builder.query({
+            query: (id) => ({ url: `/quizzes/${id}` })
+        }),
+
         getQuizByVideoId: builder.query({
             query: (id) => ({ url: `/quizzes?video_id_like=${id}` })
         }),
@@ -29,6 +33,14 @@ export const quizApi = apiSlice.injectEndpoints({
                     );
                 } catch (err) { }
             },
+        }),
+
+        editQuiz: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/quizzes/${id}`,
+                method: 'PATCH',
+                body: data,
+            }),
         }),
 
         deleteQuiz: builder.mutation({
@@ -55,7 +67,9 @@ export const quizApi = apiSlice.injectEndpoints({
 
 export const {
     useGetQuizzesQuery,
+    useGetQuizQuery,
     useGetQuizByVideoIdQuery,
     useAddQuizMutation,
+    useEditQuizMutation,
     useDeleteQuizMutation
 } = quizApi;
