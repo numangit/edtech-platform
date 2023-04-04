@@ -11,6 +11,7 @@ const QuizModal = ({ setShowModal }) => {
     const [video, setVideo] = useState('');
     const [options, setOptions] = useState([]);
 
+
     //function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -87,7 +88,7 @@ const QuizModal = ({ setShowModal }) => {
                                         className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
                                         required
                                         value={options[0]?.option}
-                                        onChange={(e) => setQuestion(e.target.value)}
+                                        onChange={(e) => setOptions([...options, { option: e.target.value }])}
                                     />
                                 </div>
                                 <div className="flex justify-end">
