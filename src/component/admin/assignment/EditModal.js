@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useEditAssignmentMutation, useGetAssignmentQuery } from "../../../features/assignment/assignmentApi";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
+import { useGetVideoQuery } from "../../../features/videos/videoApi";
 
 const EditModal = ({ id, setShowModal }) => {
 
-    //getting the videos
+    //getting required info
     const { data: videos } = useGetVideosQuery() || {};
     const { data: assignment } = useGetAssignmentQuery(id) || {};
+    const { video_id } = assignment || {};
+    const { data: selectedVideo } = useGetVideoQuery(video_id) || {};
 
     //get mutation
     const [editAssignment] = useEditAssignmentMutation();
@@ -20,15 +23,12 @@ const EditModal = ({ id, setShowModal }) => {
     useEffect(() => {
         if (assignment?.id) {
             setTitle(assignment.title);
-            setVideo(
-                {
-                    video_id: assignment.video_id,
-                    video_title: assignment.video_title
-                }
-            );
+            setVideo(JSON.stringify(selectedVideo));
             setTotalMark(assignment.totalMark);
-        }
-    }, [assignment])
+        };
+    }, [assignment, selectedVideo]);
+
+    console.log(video);
 
     //function to handle submit
     const handleSubmit = (e) => {
