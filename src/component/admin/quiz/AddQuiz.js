@@ -11,7 +11,7 @@ const AddQuiz = () => {
             <button
                 onClick={() => setShowModal(true)}
                 className="btn ml-auto">
-                Add Video
+                Add Quiz
             </button>
             {
                 //modal

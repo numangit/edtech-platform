@@ -9,7 +9,10 @@ const QuizModal = ({ setShowModal }) => {
     //form input states
     const [question, setQuestion] = useState('');
     const [video, setVideo] = useState('');
-    const [options, setOptions] = useState([]);
+    const [option1, setOption1] = useState({ id: 1, option: "", isCorrect: true });
+    const [option2, setOption2] = useState({ id: 2, option: "", isCorrect: true });
+    const [option3, setOption3] = useState({ id: 3, option: "", isCorrect: true });
+    const [option4, setOption4] = useState({ id: 4, option: "", isCorrect: true });
 
 
     //function to handle submit
@@ -20,7 +23,7 @@ const QuizModal = ({ setShowModal }) => {
             question,
             video_id: parsedVideo.id,
             video_title: parsedVideo.title,
-            options
+            options: [option1, option2, option3, option4]
         };
         const confirmation = window.confirm("Are you sure?");
         confirmation && console.log(data);
@@ -79,18 +82,119 @@ const QuizModal = ({ setShowModal }) => {
                                         onChange={(e) => setQuestion(e.target.value)}
                                     />
                                 </div>
-                                <div className="my-1">
-                                    <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Option 1</label>
-                                    <input
-                                        id="question"
-                                        type="text"
-                                        name="question"
-                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
-                                        required
-                                        value={options[0]?.option}
-                                        onChange={(e) => setOptions([...options, { option: e.target.value }])}
-                                    />
+                                {/* option 1  */}
+                                <div className="my-1 flex w-full">
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Option 1</label>
+                                        <input
+                                            id="question"
+                                            type="text"
+                                            name="question"
+                                            className="p-2 text-white bg-slate-800 w-[390px] rounded-md my-2 focus:outline-none"
+                                            required
+                                            value={option1.option}
+                                            onChange={(e) => setOption1({ ...option1, option: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <select
+                                            name="video"
+                                            id="video"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                            onChange={(e) => setOption1({ ...option1, isCorrect: JSON.parse(e.target.value) })}
+                                        >
+                                            <option hidden defaultValue>select</option>
+                                            <option value={true}>correct</option>
+                                            <option value={false}>wrong</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                {/* option 2  */}
+                                <div className="my-1 flex w-full">
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Option 2</label>
+                                        <input
+                                            id="question"
+                                            type="text"
+                                            name="question"
+                                            className="p-2 text-white bg-slate-800 w-[390px] rounded-md my-2 focus:outline-none"
+                                            required
+                                            value={option2.option}
+                                            onChange={(e) => setOption2({ ...option2, option: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <select
+                                            name="video"
+                                            id="video"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                            onChange={(e) => setOption2({ ...option2, isCorrect: JSON.parse(e.target.value) })}
+                                        >
+                                            <option hidden defaultValue>select</option>
+                                            <option value={true}>correct</option>
+                                            <option value={false}>wrong</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                {/* option 3  */}
+                                <div className="my-1 flex w-full">
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Option 3</label>
+                                        <input
+                                            id="question"
+                                            type="text"
+                                            name="question"
+                                            className="p-2 text-white bg-slate-800 w-[390px] rounded-md my-2 focus:outline-none"
+                                            required
+                                            value={option3.option}
+                                            onChange={(e) => setOption3({ ...option3, option: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <select
+                                            name="video"
+                                            id="video"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                            onChange={(e) => setOption3({ ...option3, isCorrect: JSON.parse(e.target.value) })}
+                                        >
+                                            <option hidden defaultValue>select</option>
+                                            <option value={true}>correct</option>
+                                            <option value={false}>wrong</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                {/* option 4  */}
+                                <div className="my-1 flex w-full">
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">Option 4</label>
+                                        <input
+                                            id="question"
+                                            type="text"
+                                            name="question"
+                                            className="p-2 text-white bg-slate-800 w-[390px] rounded-md my-2 focus:outline-none"
+                                            required
+                                            value={option4.option}
+                                            onChange={(e) => setOption4({ ...option4, option: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="mx-0.5">
+                                        <label htmlFor="assignment" className="text-slate-500 text-base font-semibold after:content-['*'] after:text-red-500 after:ml-1">status</label>
+                                        <select
+                                            name="video"
+                                            id="video"
+                                            className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
+                                            onChange={(e) => setOption4({ ...option4, isCorrect: JSON.parse(e.target.value) })}
+                                        >
+                                            <option hidden defaultValue>select</option>
+                                            <option value={true}>correct</option>
+                                            <option value={false}>wrong</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div className="flex justify-end">
                                     <button
                                         type="submit"
