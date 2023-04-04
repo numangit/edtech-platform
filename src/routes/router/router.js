@@ -19,25 +19,25 @@ export const router = createBrowserRouter([
     //student routes
     {
         path: '/',
-        element: <Main />,
+        element: <StudentRoute><Main /></StudentRoute>,
         children: [
             {
                 path: '/',
-                element: <CourseLayout />,
+                element: <StudentRoute><CourseLayout /></StudentRoute>,
                 children: [
                     {
                         path: '/videos/:id',
-                        element: <VideoPlayer />
+                        element: <StudentRoute><VideoPlayer /></StudentRoute>
                     }
                 ]
             },
             {
                 path: '/leaderboard',
-                element: <Leaderboard />
+                element: <StudentRoute><Leaderboard /></StudentRoute>
             },
             {
                 path: '/quiz/:id',
-                element: <Quizzes />
+                element: <StudentRoute><Quizzes /></StudentRoute>
             }
         ]
     },

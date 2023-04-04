@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import logo from '../../assets/image/learningportal.svg';
 import { useLoginMutation } from '../../features/auth/authApi';
 import { Link, useNavigate } from 'react-router-dom';
 import Error from '../../component/common/Error';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '../../features/auth/authSelector';
 
 const AdminLogin = () => {
 
@@ -15,11 +17,19 @@ const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    //getting info related to current student
+    const { user } = useSelector(selectAuth) || {};
+
     //function to reset
     const reset = () => {
         setEmail('');
         setPassword('');
     };
+
+    //checking login response
+    useEffect(() => {
+        if (!isError && user?.role === "admin") navigate('/admin');
+    }, [isError, user, navigate]);
 
     //function to handle form submit
     const handleSubmit = (e) => {
@@ -27,9 +37,6 @@ const AdminLogin = () => {
         const data = { email, password };
         login(data);
         reset();
-        if (!isError) {
-            navigate('/admin');
-        }
     };
 
     return (
@@ -72,7 +79,7 @@ const AdminLogin = () => {
                         </div>
                     </div>
                     {
-                        isError && <Error message={error?.error} />
+                        isError && <Error message={error?.data} />
                     }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">

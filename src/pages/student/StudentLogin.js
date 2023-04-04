@@ -11,7 +11,7 @@ const StudentLogin = () => {
     const navigate = useNavigate();
 
     //getting login mutation
-    const [login, { data: res, isLoading, isError, error }] = useLoginMutation();
+    const [login, { isLoading, isError, error }] = useLoginMutation();
 
     //getting info related to current student
     const { user } = useSelector(selectAuth) || {};
@@ -28,8 +28,8 @@ const StudentLogin = () => {
 
     //checking login response
     useEffect(() => {
-        if (!isError && user?.id) navigate('/videos/1');
-    }, [isError, user, navigate])
+        if (!isError && user?.role === "student") navigate('/videos/1');
+    }, [isError, user, navigate]);
 
     //function to handle form submit
     const handleSubmit = (e) => {
