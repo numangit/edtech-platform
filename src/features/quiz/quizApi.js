@@ -11,6 +11,14 @@ export const quizApi = apiSlice.injectEndpoints({
             query: (id) => ({ url: `/quizzes?video_id_like=${id}` })
         }),
 
+        addQuiz: builder.mutation({
+            query: (data) => ({
+                url: "/quizzes",
+                method: 'POST',
+                body: data
+            }),
+        }),
+
         deleteQuiz: builder.mutation({
 
             query: (id) => ({

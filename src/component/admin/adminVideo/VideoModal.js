@@ -34,9 +34,7 @@ const VideoModal = ({ setShowModal }) => {
 
     return (
         <>
-            <div
-                className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm"
-            >
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm" >
                 <div className="relative my-6 w-2/5">
                     <div className="border-0 rounded-xl shadow-lg relative flex flex-col w-full bg-slate-900 outline-none focus:outline-none p-3">
                         {/*header*/}
@@ -64,7 +62,7 @@ const VideoModal = ({ setShowModal }) => {
                                         id="title"
                                         type="text"
                                         name="title"
-                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none "
+                                        className="p-2 text-white bg-slate-800 w-full rounded-md my-2 focus:outline-none"
                                         required
                                         value={title}
                                         onChange={(e) => setTitle(e.target.value)}
@@ -129,7 +127,6 @@ const VideoModal = ({ setShowModal }) => {
                                         Done
                                     </button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
