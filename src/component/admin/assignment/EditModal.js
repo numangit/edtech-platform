@@ -41,9 +41,8 @@ const EditModal = ({ id, setShowModal }) => {
             video_title: parsedVideo.title
         };
         const confirmation = window.confirm("Are you sure?");
-        confirmation && console.log({ id, data });
-        // confirmation && editAssignment({ id, data });
-        // confirmation && setShowModal(false);
+        confirmation && editAssignment({ id, data });
+        confirmation && setShowModal(false);
     };
 
     return (

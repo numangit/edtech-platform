@@ -109,6 +109,13 @@
       "video_id": 2,
       "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
       "totalMark": 100
+    },
+    {
+      "id": 3,
+      "title": "Assignment 3 - resume resume resumeeee",
+      "video_id": 5,
+      "video_title": "How to write a professional Resume - Resume tips for web developers",
+      "totalMark": 100
     }
   ],
   "quizzes": [
@@ -245,6 +252,18 @@
       "mark": 200,
       "repo_link": "https://github.com/Learn-with-Sumit/assignment-1",
       "status": "published"
+    },
+    {
+      "student_id": 3,
+      "student_name": "Akash Ahmed",
+      "assignment_id": 3,
+      "title": "Assignment 3 - resume resume resumeeee",
+      "createdAt": "2023-04-04T16:06:35.118Z",
+      "totalMark": 100,
+      "mark": 0,
+      "repo_link": "https://github.com/numangit",
+      "status": "pending",
+      "id": 5
     }
   ],
   "quizMark": [
