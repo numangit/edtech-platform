@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
+import { useAddQuizMutation } from "../../../features/quiz/quizApi";
 
 const QuizModal = ({ setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
 
+    //get mutation
+    const [addQuiz] = useAddQuizMutation();
+
     //form input states
     const [question, setQuestion] = useState('');
     const [video, setVideo] = useState('');
-    const [option1, setOption1] = useState({ id: 1, option: "", isCorrect: true });
-    const [option2, setOption2] = useState({ id: 2, option: "", isCorrect: true });
-    const [option3, setOption3] = useState({ id: 3, option: "", isCorrect: true });
-    const [option4, setOption4] = useState({ id: 4, option: "", isCorrect: true });
+    const [option1, setOption1] = useState({ id: 1, option: "", isCorrect: null });
+    const [option2, setOption2] = useState({ id: 2, option: "", isCorrect: null });
+    const [option3, setOption3] = useState({ id: 3, option: "", isCorrect: null });
+    const [option4, setOption4] = useState({ id: 4, option: "", isCorrect: null });
 
 
     //function to handle submit
@@ -25,10 +29,11 @@ const QuizModal = ({ setShowModal }) => {
             video_title: parsedVideo.title,
             options: [option1, option2, option3, option4]
         };
+
+        //confirmation
         const confirmation = window.confirm("Are you sure?");
-        confirmation && console.log(data);
-        // confirmation && addAssignment(data);
-        // confirmation && setShowModal(false);
+        confirmation && addQuiz(data);
+        confirmation && setShowModal(false);
     };
 
     return (
