@@ -1,4 +1,5 @@
 import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
+import Error from '../../common/Error';
 import MarkRow from './MarkRow';
 
 const MarkTable = () => {
@@ -11,7 +12,7 @@ const MarkTable = () => {
     if (isLoading) {
         content = <tr><td className="text-center">Loading...</td></tr>;
     } else if (!isLoading && isError) {
-        content = <tr><td className="text-center"> {error?.error}</td></tr>;
+        content = <tr><td><Error message={error?.error} /></td></tr>;
     } else if (!isLoading && !isError && marks?.length === 0) {
         content = <tr><td className="text-center">No marks found!</td></tr>;
     } else if (!isLoading && !isError && marks?.length > 0) {

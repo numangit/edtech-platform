@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoTableRow from './VideoTableRow';
 import { useGetVideosQuery } from '../../../features/videos/videoApi';
+import Error from '../../common/Error';
 
 const VideoTable = () => {
 
@@ -13,7 +14,7 @@ const VideoTable = () => {
     if (isLoading) {
         content = <tr><td className="text-center">Loading...</td></tr>;
     } else if (!isLoading && isError) {
-        content = <tr><td className="text-center"> {error?.error}</td></tr>;
+        content = <tr><td> <Error message={error?.error} /></td></tr>;
     } else if (!isLoading && !isError && videos?.length === 0) {
         content = <tr><td className="text-center">No videos found!</td></tr>;
     } else if (!isLoading && !isError && videos?.length > 0) {

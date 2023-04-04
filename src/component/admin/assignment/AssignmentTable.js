@@ -1,4 +1,5 @@
 import { useGetAssignmentsQuery } from '../../../features/assignment/assignmentApi';
+import Error from '../../common/Error';
 import AssignmentRow from './AssignmentRow';
 
 const AssignmentTable = () => {
@@ -12,7 +13,7 @@ const AssignmentTable = () => {
     if (isLoading) {
         content = <tr><td className="text-center">Loading...</td></tr>;
     } else if (!isLoading && isError) {
-        content = <tr><td className="text-center"> {error?.error}</td></tr>;
+        content = <tr><td><Error message={error?.error} /></td></tr>;
     } else if (!isLoading && !isError && assignments?.length === 0) {
         content = <tr><td className="text-center">No assignments found!</td></tr>;
     } else if (!isLoading && !isError && assignments?.length > 0) {

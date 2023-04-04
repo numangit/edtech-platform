@@ -1,4 +1,5 @@
 import { useGetQuizzesQuery } from "../../../features/quiz/quizApi";
+import Error from "../../common/Error";
 import QuizRow from "./QuizRow";
 
 const QuizTable = () => {
@@ -12,7 +13,7 @@ const QuizTable = () => {
     if (isLoading) {
         content = <tr><td className="text-center">Loading...</td></tr>;
     } else if (!isLoading && isError) {
-        content = <tr><td className="text-center"> {error?.error}</td></tr>;
+        content = <tr><td><Error message={error?.error} /></td></tr>;
     } else if (!isLoading && !isError && quizzes?.length === 0) {
         content = <tr><td className="text-center">No quizzes found!</td></tr>;
     } else if (!isLoading && !isError && quizzes?.length > 0) {
