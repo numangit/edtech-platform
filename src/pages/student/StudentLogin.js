@@ -1,15 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoginMutation } from "../../features/auth/authApi";
 import Error from "../../component/common/Error";
+import { useSelector } from "react-redux";
+import { selectAuth } from "../../features/auth/authSelector";
 
 const StudentLogin = () => {
 
     const navigate = useNavigate();
 
     //getting login mutation
-    const [login, { isLoading, isError, error }] = useLoginMutation();
+    const [login, { data: res, isLoading, isError, error }] = useLoginMutation();
+
+    //getting info related to current student
+    const { user } = useSelector(selectAuth) || {};
 
     //input states
     const [email, setEmail] = useState('');
@@ -21,15 +26,17 @@ const StudentLogin = () => {
         setPassword('');
     };
 
+    //checking login response
+    useEffect(() => {
+        if (!isError && user?.id) navigate('/videos/1');
+    }, [isError, user, navigate])
+
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = { email, password };
         login(data);
         reset();
-        if (!isError) {
-            navigate('/videos/1');
-        };
     };
 
     return (
@@ -71,9 +78,6 @@ const StudentLogin = () => {
                                 onChange={e => setPassword(e.target.value)} />
                         </div>
                     </div>
-                    {
-                        isError && <Error message={error?.error} />
-                    }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">
                             <Link to="/register" className="font-medium text-violet-600 hover:text-violet-500">
@@ -81,7 +85,9 @@ const StudentLogin = () => {
                             </Link>
                         </div>
                     </div>
-
+                    {
+                        isError && <Error message={error?.data} />
+                    }
                     <div>
                         <button disabled={isLoading} type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
