@@ -194,8 +194,8 @@ const QuizModal = ({ setShowModal }) => {
                                             onChange={(e) => setOption4({ ...option4, isCorrect: JSON.parse(e.target.value) })}
                                         >
                                             <option hidden defaultValue>select</option>
-                                            <option value={true}>Yes</option>
-                                            <option value={false}>No</option>
+                                            <option value={true}>correct</option>
+                                            <option value={false}>wrong</option>
                                         </select>
                                     </div>
                                 </div>
