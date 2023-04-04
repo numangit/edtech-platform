@@ -17,7 +17,7 @@ const EditVideo = () => {
             {
                 //modal
                 showModal
-                && <VideoModal setShowModal={setShowModal} />
+                && <EditVideo setShowModal={setShowModal} />
             }
         </>
     );
