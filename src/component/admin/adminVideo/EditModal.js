@@ -16,7 +16,7 @@ const EditModal = ({ id, setShowModal }) => {
     const [duration, setDuration] = useState('');
     const [views, setViews] = useState('');
 
-    //useEffect to get delayed data
+    //useEffect to set delayed data
     useEffect(() => {
         if (video?.id) {
             setTitle(video.title);
