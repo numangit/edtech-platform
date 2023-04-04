@@ -17,6 +17,18 @@ export const quizApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+
+            // adding pessimistically
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: addedQuiz } = await queryFulfilled;
+                    dispatch(
+                        apiSlice.util.updateQueryData('getQuizzes', undefined, (draft) => {
+                            draft.push(addedQuiz);
+                        })
+                    );
+                } catch (err) { }
+            },
         }),
 
         deleteQuiz: builder.mutation({
@@ -44,5 +56,6 @@ export const quizApi = apiSlice.injectEndpoints({
 export const {
     useGetQuizzesQuery,
     useGetQuizByVideoIdQuery,
+    useAddQuizMutation,
     useDeleteQuizMutation
 } = quizApi;
