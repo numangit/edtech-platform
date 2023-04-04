@@ -7,6 +7,10 @@ export const assignmentApi = apiSlice.injectEndpoints({
             query: () => ({ url: '/assignments' })
         }),
 
+        getAssignment: builder.query({
+            query: (id) => ({ url: `/assignments/${id}` })
+        }),
+
         getAssignmentByVideoId: builder.query({
             query: (id) => ({ url: `/assignments?video_id_like=${id}` })
         }),
@@ -48,7 +52,7 @@ export const assignmentApi = apiSlice.injectEndpoints({
                         draft[AssignmentIndex] = { ...updatedAssignment };
                     }),)
                     //update assignment cache
-                    dispatch(apiSlice.util.updateQueryData('getQuiz', id, (draft) => updatedAssignment));
+                    dispatch(apiSlice.util.updateQueryData('getAssignment', id, (draft) => updatedAssignment));
                 } catch (err) { }
             },
         }),
@@ -77,6 +81,7 @@ export const assignmentApi = apiSlice.injectEndpoints({
 
 export const {
     useGetAssignmentsQuery,
+    useGetAssignmentQuery,
     useGetAssignmentByVideoIdQuery,
     useAddAssignmentMutation,
     useEditAssignmentMutation,
