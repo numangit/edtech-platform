@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useEditQuizMutation, useGetQuizQuery } from "../../../features/quiz/quizApi";
-import { useGetVideosQuery } from "../../../features/videos/videoApi";
+import { useGetVideoQuery, useGetVideosQuery } from "../../../features/videos/videoApi";
 
 const EditModal = ({ id, setShowModal }) => {
 
     //getting required data
     const { data: videos } = useGetVideosQuery() || {};
     const { data: quiz } = useGetQuizQuery(id) || {};
+    const { data: selectedVideo } = useGetVideoQuery(quiz?.video_id) || {};
 
     //get mutation
     const [editQuiz] = useEditQuizMutation();
@@ -23,12 +24,7 @@ const EditModal = ({ id, setShowModal }) => {
     useEffect(() => {
         if (quiz?.id) {
             setQuestion(quiz.question);
-            setVideo(
-                {
-                    video_id: quiz.video_id,
-                    video_title: quiz.video_title
-                }
-            );
+            setVideo(JSON.stringify(selectedVideo));
             setOption1(
                 {
                     id: 1,
@@ -58,7 +54,7 @@ const EditModal = ({ id, setShowModal }) => {
                 }
             );
         }
-    }, [quiz])
+    }, [quiz, selectedVideo])
 
     //function to handle submit
     const handleSubmit = (e) => {

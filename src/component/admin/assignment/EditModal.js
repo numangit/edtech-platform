@@ -8,8 +8,7 @@ const EditModal = ({ id, setShowModal }) => {
     //getting required info
     const { data: videos } = useGetVideosQuery() || {};
     const { data: assignment } = useGetAssignmentQuery(id) || {};
-    const { video_id } = assignment || {};
-    const { data: selectedVideo } = useGetVideoQuery(video_id) || {};
+    const { data: selectedVideo } = useGetVideoQuery(assignment?.video_id) || {};
 
     //get mutation
     const [editAssignment] = useEditAssignmentMutation();
@@ -27,8 +26,6 @@ const EditModal = ({ id, setShowModal }) => {
             setTotalMark(assignment.totalMark);
         };
     }, [assignment, selectedVideo]);
-
-    console.log(video);
 
     //function to handle submit
     const handleSubmit = (e) => {
