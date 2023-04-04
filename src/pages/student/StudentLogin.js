@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
 import { useState } from "react";
 import { useLoginMutation } from "../../features/auth/authApi";
+import Error from "../../component/common/Error";
 
 const StudentLogin = () => {
 
@@ -71,10 +72,7 @@ const StudentLogin = () => {
                         </div>
                     </div>
                     {
-                        isError &&
-                        <div >
-                            <p className="text-red-500 text-center">{error.data}</p>
-                        </div>
+                        isError && <Error message={error?.error} />
                     }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">

@@ -1,4 +1,5 @@
 import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
+import Error from '../../common/Error';
 
 const Status = () => {
 
@@ -13,12 +14,10 @@ const Status = () => {
     return (
         <>
             {
-                (isLoading)
-                && <div><p className='text-center'>Loading...</p></div>
+                (isLoading) && <div><p className='text-center'>Loading...</p></div>
             }
             {
-                (!isLoading && isError)
-                && <div><p className='text-center'>{error?.error}</p></div>
+                (!isLoading && isError) && <Error message={error?.error} />
             }
             {
                 (!isLoading && !isError && marks?.length > 0)

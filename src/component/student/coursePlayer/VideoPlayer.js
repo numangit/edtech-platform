@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useGetQuizByVideoIdQuery } from '../../../features/quiz/quizApi';
 import { useGetAssignmentByVideoIdQuery } from '../../../features/assignment/assignmentApi';
 import AssignmentModal from './AssignmentModal';
+import Error from '../../common/Error';
 
 const VideoPlayer = () => {
 
@@ -33,8 +34,7 @@ const VideoPlayer = () => {
                 isLoading && <div className="text-center">Loading...</div>
             }
             {
-                (!isLoading && isError)
-                && <div className="text-center"> {error?.error}</div>
+                (!isLoading && isError) && <Error message={error?.error} />
             }
             {
                 (!isLoading && !isError && !video?.id) && <div className="text-center">No video found!</div>

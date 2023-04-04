@@ -1,4 +1,5 @@
 import { useGetVideosQuery } from '../../../features/videos/videoApi';
+import Error from '../../common/Error';
 import Video from './Video';
 
 const Videos = () => {
@@ -12,7 +13,7 @@ const Videos = () => {
     if (isLoading) {
         content = <div className="text-center">Loading...</div>;
     } else if (!isLoading && isError) {
-        content = <div className="text-center"> {error?.error}</div>;
+        content = <Error message={error?.error} />;
     } else if (!isLoading && !isError && videos?.length === 0) {
         content = <div className="text-center">No videos found!</div>;
     } else if (!isLoading && !isError && videos?.length > 0) {

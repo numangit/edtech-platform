@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useGetQuizByVideoIdQuery } from "../../../features/quiz/quizApi";
 import Quiz from './Quiz';
+import Error from "../../common/Error";
 
 const QuizForm = () => {
 
@@ -16,7 +17,7 @@ const QuizForm = () => {
     if (isLoading) {
         content = <div className="text-center">Loading...</div>;
     } else if (!isLoading && isError) {
-        content = <div className="text-center"> {error?.error}</div>;
+        content = <Error message={error?.error} />;
     } else if (!isLoading && !isError && quizzes?.length > 0) {
         content = quizzes?.map((quiz, index) => <Quiz key={quiz.id} quiz={quiz} index={index} />)
     };

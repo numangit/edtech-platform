@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/image/learningportal.svg";
 import { useRegisterMutation } from "../../features/auth/authApi";
 import { Link } from "react-router-dom";
+import Error from "../../component/common/Error";
 
 const StudentRegistration = () => {
 
@@ -100,10 +101,7 @@ const StudentRegistration = () => {
                         </div>
                     </div>
                     {
-                        isError &&
-                        <div >
-                            <p className="text-red-500 text-center">{error.data}</p>
-                        </div>
+                        isError && <Error message={error?.error} />
                     }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">
