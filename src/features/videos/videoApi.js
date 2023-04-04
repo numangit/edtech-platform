@@ -36,6 +36,17 @@ export const videoApi = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: data,
             }),
+            // pessimistic update
+            async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: updatedVideo } = await queryFulfilled;
+                    dispatch(apiSlice.util.updateQueryData('getVideos', undefined, (draft) => {
+                        const videoIndex = draft?.findIndex(video => video?.id === id);
+                        draft[videoIndex] = { ...updatedVideo };
+                    }),)
+                    dispatch(apiSlice.util.updateQueryData('getVideo', id, (draft) => updatedVideo));
+                } catch (err) { }
+            },
         }),
 
         deleteVideo: builder.mutation({
