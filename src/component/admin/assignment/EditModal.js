@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { useEditAssignmentMutation } from "../../../features/assignment/assignmentApi";
+import { useEffect, useState } from "react";
+import { useEditAssignmentMutation, useGetAssignmentQuery } from "../../../features/assignment/assignmentApi";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
 
 const EditModal = ({ id, setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
+    const { data: assignment } = useGetAssignmentQuery(id) || {};
 
     //get mutation
     const [editAssignment] = useEditAssignmentMutation();
@@ -14,6 +15,20 @@ const EditModal = ({ id, setShowModal }) => {
     const [title, setTitle] = useState('');
     const [video, setVideo] = useState('');
     const [totalMark, setTotalMark] = useState('');
+
+    //useEffect to set delayed data
+    useEffect(() => {
+        if (assignment?.id) {
+            setTitle(assignment.title);
+            setVideo(
+                {
+                    video_id: assignment.video_id,
+                    video_title: assignment.video_title
+                }
+            );
+            setTotalMark(assignment.totalMark);
+        }
+    }, [assignment])
 
     //function to handle submit
     const handleSubmit = (e) => {
