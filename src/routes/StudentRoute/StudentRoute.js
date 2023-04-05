@@ -16,7 +16,11 @@ const StudentRoute = ({ children }) => {
 
     //if authCheck is loading
     if (isLoading) {
-        return <div><p className='text-center text-lg font-semibold mt-8'>Checking User Authentication...</p></div>
+        return <div className="flex items-center justify-center h-screen">
+            <p className='text-center text-3xl font-bold'>
+                Checking User Authentication...
+            </p>
+        </div>
     };
 
     //if user is available and is student

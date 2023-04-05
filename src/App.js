@@ -12,7 +12,11 @@ function App() {
     <>
       {
         isLoading && !userLoggedIn
-          ? <div><p className='text-center text-lg font-semibold mt-8'>Checking User Authentication..</p></div>
+          ? <div className="flex items-center justify-center h-screen">
+            <p className='text-center text-3xl font-bold'>
+              Checking User Authentication..
+            </p>
+          </div>
           : < RouterProvider router={router} />
       }
     </>
