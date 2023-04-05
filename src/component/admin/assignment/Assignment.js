@@ -2,7 +2,7 @@ import { useDeleteAssignmentMutation } from "../../../features/assignment/assign
 import DeleteButton from "../../common/DeleteButton";
 import EditButton from "./EditButton";
 
-const AssignmentRow = ({ assignment }) => {
+const Assignment = ({ assignment }) => {
 
     //getting delete mutation
     const [deleteAssignment] = useDeleteAssignmentMutation();
@@ -23,4 +23,4 @@ const AssignmentRow = ({ assignment }) => {
     );
 };
 
-export default AssignmentRow;
+export default Assignment;

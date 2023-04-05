@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
 import { useAddAssignmentMutation } from "../../../features/assignment/assignmentApi";
 
-const AssignmentModal = ({ setShowModal }) => {
+const AddModal = ({ setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
@@ -114,4 +114,4 @@ const AssignmentModal = ({ setShowModal }) => {
     );
 };
 
-export default AssignmentModal;
+export default AddModal;

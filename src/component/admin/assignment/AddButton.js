@@ -1,13 +1,13 @@
 import { useState } from "react";
-import AssignmentModal from "./AssignmentModal";
+import AddModal from "./AddModal";
 
-const AddAssignment = () => {
+const AddButton = () => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <div className="w-full flex">
+        <>
             <button
                 onClick={() => setShowModal(true)}
                 className="btn ml-auto">
@@ -16,10 +16,10 @@ const AddAssignment = () => {
             {
                 //modal
                 showModal
-                && <AssignmentModal setShowModal={setShowModal} />
+                && <AddModal setShowModal={setShowModal} />
             }
-        </div>
+        </>
     );
 };
 
-export default AddAssignment;
+export default AddButton;
