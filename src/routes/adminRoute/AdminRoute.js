@@ -11,12 +11,12 @@ const AdminRoute = ({ children }) => {
     //getting current user info
     const { user } = useSelector(selectAuth) || {};
 
-    //if user is available and is student
+    //if user is available and is admin
     if (user?.role === "admin") {
         return children;
     };
 
-    //if user is not logged in or is not student
+    //if user is not logged in or is not admin
     dispatch(logout());
     localStorage.clear('authInfo');
 

@@ -14,6 +14,7 @@ import AssignmentMark from "../../pages/admin/AssignmentMark";
 import Assignment from "../../pages/admin/Assignment";
 import Quizzes from "../../pages/student/Quizzes";
 import StudentRoute from "../StudentRoute/StudentRoute";
+import AdminRoute from "../adminRoute/AdminRoute";
 
 export const router = createBrowserRouter([
     //student routes
@@ -52,27 +53,27 @@ export const router = createBrowserRouter([
     //admin routes
     {
         path: '/admin',
-        element: <AdminLayout />,
+        element: <AdminRoute><AdminLayout /></AdminRoute>,
         children: [
             {
                 path: '/admin',
-                element: <AdminDashboard />,
+                element: <AdminRoute><AdminDashboard /></AdminRoute>,
             },
             {
                 path: '/admin/assignment',
-                element: <Assignment />,
+                element: <AdminRoute><Assignment /></AdminRoute>,
             },
             {
                 path: '/admin/assignment-mark',
-                element: <AssignmentMark />,
+                element: <AdminRoute><AssignmentMark /></AdminRoute>,
             },
             {
                 path: '/admin/quizzes',
-                element: <AdminQuiz />
+                element: <AdminRoute><AdminQuiz /></AdminRoute>,
             },
             {
                 path: '/admin/videos',
-                element: <AdminVideos />
+                element: <AdminRoute><AdminVideos /></AdminRoute>,
             }
         ]
     },
