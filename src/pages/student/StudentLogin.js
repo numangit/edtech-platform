@@ -37,7 +37,7 @@ const StudentLogin = () => {
     //checking login response
     useEffect(() => {
         if (!isError && user?.role === "student") {
-            navigate(from, { replace: true })
+            navigate(from === '/' ? '/videos/1' : from, { replace: true })
         } else if (!isError && user?.role === "admin") {
             dispatch(logout());
             localStorage.clear('authInfo');
