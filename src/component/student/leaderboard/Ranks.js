@@ -1,8 +1,8 @@
 import React from 'react';
 import { useGetUsersByRoleQuery } from '../../../features/users/usersApi';
-import TableRow from './TableRow';
+import Rank from './Rank';
 
-const StudentsRankList = () => {
+const Ranks = () => {
 
     //get all users
     const { data: students } = useGetUsersByRoleQuery("student") || {};
@@ -23,7 +23,7 @@ const StudentsRankList = () => {
                 <tbody>
                     {
                         students?.map(student => {
-                            return <TableRow key={student?.id} student={student} />
+                            return <Rank key={student?.id} student={student} />
                         })
                     }
                 </tbody>
@@ -31,5 +31,4 @@ const StudentsRankList = () => {
         </div>
     );
 };
-export default StudentsRankList;
-
+export default Ranks;

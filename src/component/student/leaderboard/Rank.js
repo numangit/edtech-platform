@@ -1,7 +1,7 @@
 import { useGetAssignmentMarkQuery } from "../../../features/assignmentMark/assignmentMarkApi";
 import { useGetQuizMarkQuery } from "../../../features/quizMark/quizMarkApi";
 
-const TableRow = ({ student }) => {
+const Rank = ({ student }) => {
 
     const { id, name } = student || {};
 
@@ -33,4 +33,4 @@ const TableRow = ({ student }) => {
     );
 };
 
-export default TableRow;
+export default Rank;

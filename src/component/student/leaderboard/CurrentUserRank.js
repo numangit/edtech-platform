@@ -4,7 +4,7 @@ import { selectAuth } from '../../../features/auth/authSelector';
 import { useGetQuizMarkQuery } from '../../../features/quizMark/quizMarkApi';
 import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 
-const StudentRank = () => {
+const CurrentUserRank = () => {
 
     //getting info related to current student
     const { user } = useSelector(selectAuth) || {};
@@ -55,4 +55,4 @@ const StudentRank = () => {
     );
 };
 
-export default StudentRank;
+export default CurrentUserRank;
