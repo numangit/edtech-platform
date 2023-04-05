@@ -1,14 +1,19 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/image/learningportal.svg";
 import { useEffect, useState } from "react";
 import { useLoginMutation } from "../../features/auth/authApi";
-import Error from "../../component/common/Error";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../features/auth/authSelector";
+import { logout } from "../../features/auth/authSlice";
 
 const StudentLogin = () => {
 
+    const dispatch = useDispatch();
+
+    //find the previous location
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/videos/1';
 
     //getting login mutation
     const [login, { isLoading, isError, error }] = useLoginMutation();
@@ -20,6 +25,9 @@ const StudentLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    //alert
+    const [alert, setAlert] = useState(null);
+
     //function to reset
     const reset = () => {
         setEmail('');
@@ -28,13 +36,25 @@ const StudentLogin = () => {
 
     //checking login response
     useEffect(() => {
-        if (!isError && user?.role === "student") navigate('/videos/1');
-    }, [isError, user, navigate]);
+        if (!isError && user?.role === "student") {
+            navigate(from, { replace: true })
+        } else if (!isError && user?.role === "admin") {
+            dispatch(logout());
+            localStorage.clear('authInfo');
+            setAlert("Please visit admin login page to login as Admin.")
+        } else if (error) {
+            console.log(error?.data);
+            setAlert(error?.data);
+        };
+    }, [isError, user, navigate, from, dispatch, error]);
 
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const data = { email, password };
+
+        setAlert(null);
         login(data);
         reset();
     };
@@ -49,6 +69,9 @@ const StudentLogin = () => {
                     </h2>
                 </div>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
+                    {
+                        alert && <p className="text-red-500 font-semibold text-center">{alert}</p>
+                    }
                     <input type="hidden" name="remember" value="true" />
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
@@ -85,9 +108,6 @@ const StudentLogin = () => {
                             </Link>
                         </div>
                     </div>
-                    {
-                        isError && <Error message={error?.data} />
-                    }
                     <div>
                         <button disabled={isLoading} type="submit"
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500">
