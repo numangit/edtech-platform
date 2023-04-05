@@ -13,7 +13,7 @@ const AdminLogin = () => {
     //find the previous location
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/admin/dashboard';
+    const from = location.state?.from?.pathname || '/admin';
 
     //getting login mutation
     const [login, { isLoading, isError, error }] = useLoginMutation();

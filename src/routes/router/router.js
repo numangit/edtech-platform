@@ -51,11 +51,11 @@ export const router = createBrowserRouter([
     },
     //admin routes
     {
-        path: '/admin/dashboard',
+        path: '/admin',
         element: <AdminLayout />,
         children: [
             {
-                path: '/admin/dashboard',
+                path: '/admin',
                 element: <AdminDashboard />,
             },
             {
