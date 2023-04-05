@@ -8,12 +8,10 @@ export default function useAuthCheck() {
     const dispatch = useDispatch();
 
     const [userLoggedIn, setUserLoggedIn] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     //code to set auth info from local storage if available
     useEffect(() => {
-        setIsLoading(true);
-
         //get authInfo from local storage
         const userInfo = localStorage?.getItem('authInfo');
 
@@ -27,7 +25,6 @@ export default function useAuthCheck() {
                 }));
             };
         };
-
         setUserLoggedIn(true);
         setIsLoading(false);
 
