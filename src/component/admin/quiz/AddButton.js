@@ -1,13 +1,13 @@
 import { useState } from "react";
-import QuizModal from "./QuizModal";
+import AddModal from "./AddModal";
 
-const AddQuiz = () => {
+const AddButton = () => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <div className="w-full flex">
+        <>
             <button
                 onClick={() => setShowModal(true)}
                 className="btn ml-auto">
@@ -16,10 +16,10 @@ const AddQuiz = () => {
             {
                 //modal
                 showModal
-                && <QuizModal setShowModal={setShowModal} />
+                && <AddModal setShowModal={setShowModal} />
             }
-        </div>
+        </>
     );
 };
 
-export default AddQuiz;
+export default AddButton;

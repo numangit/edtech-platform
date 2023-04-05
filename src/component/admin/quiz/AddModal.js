@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useGetVideosQuery } from "../../../features/videos/videoApi";
 import { useAddQuizMutation } from "../../../features/quiz/quizApi";
 
-const QuizModal = ({ setShowModal }) => {
+const AddModal = ({ setShowModal }) => {
 
     //getting the videos
     const { data: videos } = useGetVideosQuery() || {};
@@ -218,4 +218,4 @@ const QuizModal = ({ setShowModal }) => {
     );
 };
 
-export default QuizModal;
+export default AddModal;

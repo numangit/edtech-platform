@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EditModal from "./EditModal";
 
-const EditQuiz = ({ id }) => {
+const EditButton = ({ id }) => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
@@ -23,4 +23,4 @@ const EditQuiz = ({ id }) => {
     );
 };
 
-export default EditQuiz;
+export default EditButton;

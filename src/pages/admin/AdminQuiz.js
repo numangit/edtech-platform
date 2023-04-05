@@ -1,13 +1,17 @@
-import AddQuiz from "../../component/admin/quiz/AddQuiz";
-import QuizTable from "../../component/admin/quiz/QuizTable";
+import AddButton from "../../component/admin/quiz/AddButton";
+import Quizzes from "../../component/admin/quiz/Quizzes";
 
 const AdminQuiz = () => {
     return (
         <section className="py-6 bg-primary">
             <div className="mx-auto max-w-full px-5 lg:px-20">
                 <div className="px-3 py-20 bg-opacity-10">
-                    <AddQuiz />
-                    <QuizTable />
+                    <div className="w-full flex">
+                        <AddButton />
+                    </div>
+                    <div className="overflow-x-auto mt-4">
+                        <Quizzes />
+                    </div>
                 </div>
             </div>
         </section>

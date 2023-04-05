@@ -1,8 +1,8 @@
 import { useDeleteQuizMutation } from "../../../features/quiz/quizApi";
 import DeleteButton from "../../common/DeleteButton";
-import EditQuiz from "./EditQuiz";
+import EditButton from "./EditButton";
 
-const QuizRow = ({ quiz }) => {
+const Quiz = ({ quiz }) => {
 
     //getting delete mutation
     const [deleteQuiz] = useDeleteQuizMutation();
@@ -28,10 +28,10 @@ const QuizRow = ({ quiz }) => {
             </td>
             <td className="flex gap-x-2 justify-center text-gray-500">
                 <DeleteButton id={id} mutation={deleteQuiz} />
-                <EditQuiz id={id} />
+                <EditButton id={id} />
             </td>
         </tr>
     );
 };
 
-export default QuizRow;
+export default Quiz;
