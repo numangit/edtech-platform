@@ -1,13 +1,13 @@
 import { useState } from "react";
-import VideoModal from "./VideoModal";
+import AddModal from "./AddModal";
 
-const AddVideo = () => {
+const AddButton = () => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <div className="w-full flex">
+        <>
             <button
                 onClick={() => setShowModal(true)}
                 className="btn ml-auto">
@@ -16,10 +16,11 @@ const AddVideo = () => {
             {
                 //modal
                 showModal
-                && <VideoModal setShowModal={setShowModal} />
+                && <AddModal setShowModal={setShowModal} />
             }
-        </div>
+        </>
     );
 };
 
-export default AddVideo;
+
+export default AddButton;

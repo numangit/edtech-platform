@@ -1,8 +1,8 @@
 import { useDeleteVideoMutation } from '../../../features/videos/videoApi';
 import DeleteButton from '../../common/DeleteButton';
-import EditVideo from './EditVideo';
+import EditButton from './EditButton';
 
-const VideoTableRow = ({ video }) => {
+const Video = ({ video }) => {
 
     //getting delete mutation
     const [deleteVideo] = useDeleteVideoMutation();
@@ -22,10 +22,10 @@ const VideoTableRow = ({ video }) => {
             </td>
             <td className="flex gap-x-2 justify-center text-gray-500">
                 <DeleteButton id={id} mutation={deleteVideo} />
-                <EditVideo id={id} />
+                <EditButton id={id} />
             </td>
         </tr>
     );
 };
 
-export default VideoTableRow;
+export default Video;

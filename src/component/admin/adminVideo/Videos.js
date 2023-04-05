@@ -1,9 +1,8 @@
-import React from 'react';
-import VideoTableRow from './VideoTableRow';
 import { useGetVideosQuery } from '../../../features/videos/videoApi';
 import Error from '../../common/Error';
+import Video from './Video';
 
-const VideoTable = () => {
+const Videos = () => {
 
     //getting the videos
     const { data: videos, isLoading, isError, error } = useGetVideosQuery() || {};
@@ -18,7 +17,7 @@ const VideoTable = () => {
     } else if (!isLoading && !isError && videos?.length === 0) {
         content = <tr><td className="text-center">No videos found!</td></tr>;
     } else if (!isLoading && !isError && videos?.length > 0) {
-        content = videos.map(video => <VideoTableRow key={video.id} video={video} />)
+        content = videos.map(video => <Video key={video.id} video={video} />)
     };
 
     return (
@@ -38,4 +37,4 @@ const VideoTable = () => {
     );
 };
 
-export default VideoTable;
+export default Videos;

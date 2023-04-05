@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAddVideoMutation } from "../../../features/videos/videoApi";
 
-const VideoModal = ({ setShowModal }) => {
+const AddModal = ({ setShowModal }) => {
 
     //get mutation
     const [addVideo] = useAddVideoMutation();
@@ -136,4 +136,4 @@ const VideoModal = ({ setShowModal }) => {
     );
 };
 
-export default VideoModal;
+export default AddModal;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import EditModal from './EditModal';
 
-const EditVideo = ({ id }) => {
+const EditButton = ({ id }) => {
 
     //toggle state
     const [showModal, setShowModal] = useState(false);
@@ -23,4 +23,4 @@ const EditVideo = ({ id }) => {
     );
 };
 
-export default EditVideo;
+export default EditButton;
