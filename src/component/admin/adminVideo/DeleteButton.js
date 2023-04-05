@@ -1,13 +1,19 @@
+import { useDeleteAssignmentMutation, useGetAssignmentByVideoIdQuery } from "../../../features/assignment/assignmentApi";
 import { useDeleteVideoMutation } from "../../../features/videos/videoApi";
 
 const DeleteButton = ({ id }) => {
 
     //getting delete mutation
     const [deleteVideo] = useDeleteVideoMutation();
+    const [deleteAssignment] = useDeleteAssignmentMutation();
+
+    //getting assignment by videoId
+    const { data: assignments, } = useGetAssignmentByVideoIdQuery(id) || {};
 
     //function to handle delete
     const handleDelete = (paramId) => {
         deleteVideo(paramId);
+        deleteAssignment(assignments?.[0]?.id);
     };
 
     return (

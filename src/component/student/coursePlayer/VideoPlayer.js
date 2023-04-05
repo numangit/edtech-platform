@@ -18,10 +18,8 @@ const VideoPlayer = () => {
     const { data: video, isLoading, isError, error } = useGetVideoQuery(id) || {};
     const { title, createdAt, description, url } = video || {};
 
-    //getting quizzes by videoId
+    //getting quizzes and assignment by videoId
     const { data: quizzes, } = useGetQuizByVideoIdQuery(id) || {};
-
-    //getting assignments by videoId
     const { data: assignments, } = useGetAssignmentByVideoIdQuery(id) || {};
 
     //date format
