@@ -25,7 +25,7 @@ const StudentLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    //alert
+    //alert state
     const [alert, setAlert] = useState(null);
 
     //function to reset
@@ -43,7 +43,6 @@ const StudentLogin = () => {
             localStorage.clear('authInfo');
             setAlert("Please visit admin login page to login as Admin.")
         } else if (error) {
-            console.log(error?.data);
             setAlert(error?.data);
         };
     }, [isError, user, navigate, from, dispatch, error]);
