@@ -21,7 +21,7 @@ const Ranks = () => {
                 </thead>
                 <tbody>
                     {
-                        ranksData?.map((rankData, i) => {
+                        ranksData?.slice(0, 20)?.map((rankData, i) => {
                             return <Rank key={i} rankData={rankData} />
                         })
                     }
