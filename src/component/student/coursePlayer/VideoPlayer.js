@@ -30,7 +30,7 @@ const VideoPlayer = () => {
     const formattedDate = date.toDateString().slice(4).split(' ');
 
     return (
-        <div className="col-span-full w-full space-y-8 lg:col-span-2">
+        <>
             {
                 isLoading && <VideoLoad />
             }
@@ -88,7 +88,7 @@ const VideoPlayer = () => {
                     </div>
                 </>
             }
-        </div>
+        </>
     );
 };
 
