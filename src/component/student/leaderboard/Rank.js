@@ -1,34 +1,18 @@
-import { useGetAssignmentMarkQuery } from "../../../features/assignmentMark/assignmentMarkApi";
-import { useGetQuizMarkQuery } from "../../../features/quizMark/quizMarkApi";
+const Rank = ({ rankData }) => {
 
-const Rank = ({ student }) => {
-
-    const { id, name } = student || {};
-
-    //getting student quiz mark
-    const { data: quizMarks, isLoading: isQuizLoading } = useGetQuizMarkQuery(id) || {};
-    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //getting student assignment mark
-    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery(id) || {};
-    const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //calculate grand total
-    const grandTotal = totalQuizMark + totalAssignmentMark;
+    const { rank, name, totalQuizMark, totalAssignmentMark, total } = rankData || {};
 
     return (
         <tr className="border-b border-slate-600/50">
-            <td className="table-td text-center">4</td>
+            <td className="table-td text-center">{rank}</td>
             <td className="table-td text-center">{name}</td>
             <td className="table-td text-center">
-                {isQuizLoading ? 'loading..' : totalQuizMark}
+                {totalQuizMark}
             </td>
             <td className="table-td text-center">
-                {isAssignmentLoading ? 'loading..' : totalAssignmentMark}
+                {totalAssignmentMark}
             </td>
-            <td className="table-td text-center">
-                {isNaN(grandTotal) ? 'loading..' : grandTotal}
-            </td>
+            <td className="table-td text-center"> {total} </td>
         </tr>
     );
 };
