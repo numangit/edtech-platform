@@ -6,20 +6,6 @@ const Ranks = () => {
     //getting rank data
     const ranksData = useRanksData() || [];
 
-    // descending sorting
-    ranksData?.sort((a, b) => {
-        return b.total - a.total;
-    });
-
-    //calculate rank
-    let rank = 1;
-    ranksData?.forEach((data, i) => {
-        if (i > 0 && ranksData[i].total < ranksData[i - 1].total) {
-            rank++;
-        }
-        data.rank = rank;
-    });
-
     return (
         <div className="my-8">
             <h3 className="text-lg font-bold">Top 20 Result</h3>

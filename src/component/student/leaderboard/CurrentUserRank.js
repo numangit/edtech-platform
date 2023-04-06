@@ -1,25 +1,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectAuth } from '../../../features/auth/authSelector';
-import { useGetQuizMarkQuery } from '../../../features/quizMark/quizMarkApi';
-import { useGetAssignmentMarkQuery } from '../../../features/assignmentMark/assignmentMarkApi';
+import useRanksData from '../../../hooks/useRanksData';
 
 const CurrentUserRank = () => {
 
+    //getting rank data
+    const ranksData = useRanksData() || [];
+
     //getting info related to current student
     const { user } = useSelector(selectAuth) || {};
-    const { id, name } = user || {};
 
-    //getting student quiz mark
-    const { data: quizMarks, isLoading: isQuizLoading } = useGetQuizMarkQuery(id) || {};
-    const totalQuizMark = quizMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //getting student assignment mark
-    const { data: assignmentMarks, isLoading: isAssignmentLoading } = useGetAssignmentMarkQuery(id) || {};
-    const totalAssignmentMark = assignmentMarks?.reduce((total, current) => total + current.mark, 0);
-
-    //calculate grand total
-    const grandTotal = totalQuizMark + totalAssignmentMark;
+    //current student rank data
+    const myRank = ranksData?.find((data) => data?.id === user?.id);
+    const { rank, name, totalQuizMark, totalAssignmentMark, total } = myRank || {};
 
     return (
         <div>
@@ -37,17 +31,11 @@ const CurrentUserRank = () => {
 
                 <tbody>
                     <tr className="border-2 border-cyan">
-                        <td className="table-td text-center font-bold">4</td>
-                        <td className="table-td text-center font-bold">{name}</td>
-                        <td className="table-td text-center font-bold">
-                            {isQuizLoading ? 'loading..' : totalQuizMark}
-                        </td>
-                        <td className="table-td text-center font-bold">
-                            {isAssignmentLoading ? 'loading..' : totalAssignmentMark}
-                        </td>
-                        <td className="table-td text-center font-bold">
-                            {isNaN(grandTotal) ? 'loading..' : grandTotal}
-                        </td>
+                        <td className="table-td text-center">{rank}</td>
+                        <td className="table-td text-center">{name}</td>
+                        <td className="table-td text-center">{totalQuizMark}</td>
+                        <td className="table-td text-center">{totalAssignmentMark}</td>
+                        <td className="table-td text-center"> {total} </td>
                     </tr>
                 </tbody>
             </table>
