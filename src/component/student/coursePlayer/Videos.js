@@ -1,5 +1,6 @@
 import { useGetVideosQuery } from '../../../features/videos/videoApi';
 import Error from '../../common/Error';
+import NoData from '../../common/NoData';
 import VideoLoader from '../../common/loader/VideosLoader';
 import Video from './Video';
 
@@ -14,9 +15,9 @@ const Videos = () => {
     if (isLoading) {
         content = <VideoLoader />;
     } else if (!isLoading && isError) {
-        content = <Error message={error?.error} />;
+        content = <Error message={error?.data} />;
     } else if (!isLoading && !isError && videos?.length === 0) {
-        content = <div className="text-center">No videos found!</div>;
+        content = <NoData data={"videos"} />;
     } else if (!isLoading && !isError && videos?.length > 0) {
         content = videos.map(video => <Video key={video.id} video={video} />)
     };

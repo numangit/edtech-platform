@@ -1,5 +1,6 @@
 import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 import Error from '../../common/Error';
+import NoData from '../../common/NoData';
 import TableLoader from '../../common/loader/TableLoader';
 import MarkRow from './MarkRow';
 
@@ -14,11 +15,11 @@ const MarkTable = () => {
                 (isLoading) && <TableLoader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && marks?.length === 0)
-                && <tr><td className="text-center">No videos found!</td></tr>
+                && <NoData data={"marks"} />
             }
             {
                 (!isLoading && !isError && marks?.length > 0)
@@ -35,7 +36,7 @@ const MarkTable = () => {
 
                     <tbody className="divide-y divide-slate-600/50">
                         {
-                            marks?.map(markData => <MarkRow key={markData.id} markData={markData} />)
+                            marks?.map((markData, i) => <MarkRow key={i} markData={markData} />)
                         }
                     </tbody>
                 </table>

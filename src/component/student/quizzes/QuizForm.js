@@ -3,6 +3,7 @@ import { useGetQuizByVideoIdQuery } from "../../../features/quiz/quizApi";
 import Quiz from './Quiz';
 import Error from "../../common/Error";
 import Loader from "../../common/loader/Loader";
+import NoData from "../../common/NoData";
 
 const QuizForm = () => {
 
@@ -18,11 +19,11 @@ const QuizForm = () => {
                 (isLoading) && <Loader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && quizzes?.length === 0)
-                && <tr><td className="text-center">No Quiz found!</td></tr>
+                && <NoData data={"quizzes"} />
             }
             {
                 (!isLoading && !isError && quizzes?.length > 0)

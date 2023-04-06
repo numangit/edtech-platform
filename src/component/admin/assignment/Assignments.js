@@ -1,5 +1,6 @@
 import { useGetAssignmentsQuery } from '../../../features/assignment/assignmentApi';
 import Error from '../../common/Error';
+import NoData from '../../common/NoData';
 import TableLoader from '../../common/loader/TableLoader';
 import Assignment from './Assignment';
 const Assignments = () => {
@@ -13,11 +14,11 @@ const Assignments = () => {
                 (isLoading) && <TableLoader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && assignments?.length === 0)
-                && <tr><td className="text-center">No videos found!</td></tr>
+                && <NoData data={"assignments"} />
             }
             {
                 (!isLoading && !isError && assignments?.length > 0)

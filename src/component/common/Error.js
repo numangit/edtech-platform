@@ -1,7 +1,7 @@
 const Error = ({ message }) => {
     return (
-        <div className="text-center" >
-            <span className="bg-red-200 text-center text-red-600 font-bold p-2 rounded-lg">{message}</span>
+        <div className="bg-red-950 text-center text-red-100 font-semibold p-2 text-xl rounded-lg" >
+            <p>{message?.length > 0 ? message : "Oops.. an error occurred"}</p>
         </div>
     );
 };

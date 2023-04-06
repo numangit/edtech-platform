@@ -1,5 +1,6 @@
 import { useGetVideosQuery } from '../../../features/videos/videoApi';
 import Error from '../../common/Error';
+import NoData from '../../common/NoData';
 import TableLoader from '../../common/loader/TableLoader';
 import Video from './Video';
 
@@ -14,11 +15,11 @@ const Videos = () => {
                 (isLoading) && <TableLoader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && videos?.length === 0)
-                && <tr><td className="text-center">No videos found!</td></tr>
+                && <NoData data={"videos"} />
             }
             {
                 (!isLoading && !isError && videos?.length > 0)

@@ -6,6 +6,7 @@ import { useGetAssignmentByVideoIdQuery } from '../../../features/assignment/ass
 import AssignmentModal from './AssignmentModal';
 import Error from '../../common/Error';
 import VideoLoad from '../../common/loader/VideoLoad';
+import NoData from '../../common/NoData';
 
 const VideoPlayer = () => {
 
@@ -34,10 +35,10 @@ const VideoPlayer = () => {
                 isLoading && <VideoLoad />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
-                (!isLoading && !isError && !video?.id) && <div className="text-center">No video found!</div>
+                (!isLoading && !isError && !video?.id) && <NoData data={"video"} />
             }
             {
                 (!isLoading && !isError && video?.id)

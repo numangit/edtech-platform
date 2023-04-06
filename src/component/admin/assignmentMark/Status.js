@@ -18,7 +18,7 @@ const Status = () => {
                 (isLoading) && <Loader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && marks?.length > 0)

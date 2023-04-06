@@ -1,5 +1,6 @@
 import { useGetQuizzesQuery } from "../../../features/quiz/quizApi";
 import Error from "../../common/Error";
+import NoData from "../../common/NoData";
 import TableLoader from "../../common/loader/TableLoader";
 import Quiz from "./Quiz";
 
@@ -14,11 +15,11 @@ const Quizzes = () => {
                 (isLoading) && <TableLoader />
             }
             {
-                (!isLoading && isError) && <Error message={error?.error} />
+                (!isLoading && isError) && <Error message={error?.data} />
             }
             {
                 (!isLoading && !isError && quizzes?.length === 0)
-                && <tr><td className="text-center">No videos found!</td></tr>
+                && <NoData data={"quizzes"} />
             }
             {
                 (!isLoading && !isError && quizzes?.length > 0)

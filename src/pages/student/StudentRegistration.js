@@ -101,7 +101,7 @@ const StudentRegistration = () => {
                         </div>
                     </div>
                     {
-                        isError && <Error message={error?.error} />
+                        isError && <Error message={error?.data} />
                     }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">
