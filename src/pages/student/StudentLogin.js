@@ -13,7 +13,7 @@ const StudentLogin = () => {
     //find the previous location
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/videos/1';
+    const from = location.state?.from?.pathname || '/course/videos/1';
 
     //getting login mutation
     const [login, { isLoading, isError, error }] = useLoginMutation();
@@ -37,7 +37,7 @@ const StudentLogin = () => {
     //checking login response
     useEffect(() => {
         if (!isError && user?.role === "student") {
-            navigate(from === '/' ? '/videos/1' : from, { replace: true })
+            navigate(from === '/' ? '/course/videos/1' : from, { replace: true })
         } else if (!isError && user?.role === "admin") {
             dispatch(logout());
             localStorage.clear('authInfo');

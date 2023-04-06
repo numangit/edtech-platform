@@ -6,7 +6,7 @@ const Video = ({ video }) => {
     const { id, title, duration, views } = video || {};
 
     return (
-        <Link to={`/videos/${id}`}>
+        <Link to={`/course/videos/${id}`}>
             <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2 py-3">
                 {/* <!-- Thumbnail --> */}
                 <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

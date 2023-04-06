@@ -78,9 +78,9 @@
     },
     {
       "id": 4,
-      "title": "#3 JavaScript kskTips and Trick - JavaScript Job Interview Questions",
-      "description": "JavaScript Tips and Tricks - JavaScript Job Interview Questions - Bangla Tutorial \nIn this video, I have shown 8 more JavaScript pro tips that will make a JavaScript Developer's life easier.",
-      "url": "https://www.youtube.com/embed/E9_R88eKcBM",
+      "title": "RUST কি? সবাই কি RUST শিখতে পারে?",
+      "description": "এই ভিডিওতে আমি কথা বলেছি এমন একটি Programming Language নিয়ে যেটা বিগত চার বছর ধরে stackoverflow Developer Survey অনুযায়ী এই ভিডিওতে আমি explain করেছি - কি এমন special আছে Rust এ। সেইসাথে বলেছি কাদের আসলে Rust শেখা উচিৎ!",
+      "url": "https://www.youtube.com/embed/FjUFSplb6kA",
       "views": "100K",
       "duration": "31:30",
       "createdAt": "2023-04-04T14:10:13.004Z"
@@ -93,6 +93,33 @@
       "views": "4.5K",
       "createdAt": "2023-04-03T18:33:15.757Z",
       "id": 5
+    },
+    {
+      "description": "I am starting the Node js bangla tutorial series with a short story. Before we know something new, we need to know its history. So I'm starting my playlist with this video. I am giving the link to the playlist below. Then I will add all the videos of Bangla Node.js Tutorial to this playlist.",
+      "duration": "20:00",
+      "title": "#1 - Node.js নিয়ে একটি ছোট্ট গল্প - Node.js Tutorial Bangla | Express.js Tutorial Bangla",
+      "url": "https://www.youtube.com/embed/WC-g0JtEIwM",
+      "views": "143k",
+      "createdAt": "2023-04-06T15:36:09.108Z",
+      "id": 6
+    },
+    {
+      "description": "WebAssembly is a compilation target in which programming language like C, C++, Rust, Go can compile to and our browsers can understand that compiled binary. But the question that arises, will this value addition to web replace JavaScript? And the answer is....?",
+      "duration": "9:00",
+      "title": "WebAssembly কি JavaScript এর মৃত্যু ডেকে আনবে ?",
+      "url": "https://www.youtube.com/embed/ZwHmqubd_-A",
+      "views": "14k",
+      "createdAt": "2023-04-06T15:38:37.128Z",
+      "id": 7
+    },
+    {
+      "description": "ক্লায়েন্ট সার্ভার রিকুয়েস্ট রেসপন্স সাইকেলে একটি স্ট্যান্ডার্ড পলিসি হলো CORS বা Cross-Origin Resource Sharing পলিসি। এই বিষয়টি আসলে কি, কিভাবে CORS error সমাধান করা যায়, কিভাবে সার্ভার থেকে সঠিক CORS header পাঠানো যায় ইত্যাদি গুরুত্বপূর্ণ কনসেপ্ট এর সহজ ব্যাখ্যা দেয়া হয়েছে এই ভিডিওতে।",
+      "duration": "17:00",
+      "title": "CORS কি - What is CORS policy - বাংলা CORS টিউটোরিয়াল",
+      "url": "https://www.youtube.com/embed/Ry_r8DCj3hw",
+      "views": "23k",
+      "createdAt": "2023-04-06T15:40:12.699Z",
+      "id": 8
     }
   ],
   "assignments": [
