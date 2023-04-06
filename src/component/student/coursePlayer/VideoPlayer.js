@@ -27,16 +27,19 @@ const VideoPlayer = () => {
 
     //getting quizzes and assignment by videoId
     const { data: quizzes, } = useGetQuizByVideoIdQuery(id) || {};
-    const { data: assignments, } = useGetAssignmentByVideoIdQuery(id) || {};
+    const { data: assignments, isLoading: assignmentLoading } = useGetAssignmentByVideoIdQuery(id) || {};
 
     //check student assignment and quiz submission
-    const { user } = useSelector(selectAuth) || {};
+    const { user } = useSelector(selectAuth) || [{}];
 
     const { data: quizMarks, } = useGetQuizMarkQuery(user?.id) || {};
-    const { data: assignmentMarks, } = useGetAssignmentMarkQuery(user?.id) || {};
+    const { data: assignmentMarks } = useGetAssignmentMarkQuery(user?.id) || {};
 
     const quizSubmitted = quizMarks?.find((mark) => (mark?.video_id === videoId));
-    const assignmentSubmitted = assignmentMarks?.find((mark) => mark?.assignment_id === assignments[0]?.id);
+    let assignmentSubmitted = false;
+    if (!assignmentLoading) {
+        assignmentSubmitted = assignmentMarks?.find((mark) => mark?.assignment_id === assignments[0]?.id);
+    };
 
     //date format
     const date = new Date(createdAt);

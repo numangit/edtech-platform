@@ -17,6 +17,19 @@ export const assignmentMarkApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data
             }),
+            // post optimistically
+            async onQueryStarted(data, { dispatch, queryFulfilled }) {
+                const { data: addedData } = await queryFulfilled;
+
+                const patchResult = dispatch(apiSlice.util.updateQueryData('getAssignmentMark', addedData.student_id, (draft) => {
+                    draft.push(addedData);
+                }));
+                try {
+                    await queryFulfilled;
+                } catch (err) {
+                    patchResult.undo();
+                };
+            },
         }),
 
         updateAssignmentMark: builder.mutation({

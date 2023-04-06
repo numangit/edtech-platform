@@ -6,7 +6,7 @@ const Result = ({ result }) => {
             {
                 status === "pending"
                     ? <div className="px-3 flex items-center font-bold py-1 border-2 border-orange-700 text-white rounded-full bg-gradient-to-r from-orange-400 to-red-600">
-                        <span className="text-sm font-bold">Pending..</span>
+                        <span className="text-sm font-bold">Assignment mark pending..</span>
                     </div>
                     : <div className='flex space-x-3'>
                         <div className="px-3 flex items-center font-bold py-1 border-2 border-cyan-700 text-white rounded-full bg-gradient-to-l from-teal-500 to-blue-500">
