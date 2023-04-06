@@ -2,6 +2,7 @@ import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { router } from './routes/router/router';
 import useAuthCheck from './hooks/useAuthCheck';
+import Loader from './component/common/loader/Loader';
 
 function App() {
 
@@ -12,11 +13,7 @@ function App() {
     <>
       {
         isLoading && !userLoggedIn
-          ? <div className="flex items-center justify-center h-screen">
-            <p className='text-center text-2xl font-bold text-slate-500'>
-              Loading..
-            </p>
-          </div>
+          ? <Loader />
           : < RouterProvider router={router} />
       }
     </>

@@ -5,6 +5,7 @@ import { useGetQuizByVideoIdQuery } from '../../../features/quiz/quizApi';
 import { useGetAssignmentByVideoIdQuery } from '../../../features/assignment/assignmentApi';
 import AssignmentModal from './AssignmentModal';
 import Error from '../../common/Error';
+import VideoLoad from '../../common/loader/VideoLoad';
 
 const VideoPlayer = () => {
 
@@ -23,13 +24,14 @@ const VideoPlayer = () => {
     const { data: assignments, } = useGetAssignmentByVideoIdQuery(id) || {};
 
     //date format
-    const longMonth = new Date(createdAt).toLocaleString('en-us', { month: 'long' })
-    const date = new Date(createdAt).toDateString().slice(4).split(' ');
+    const date = new Date(createdAt);
+    const longMonth = date.toLocaleString('en-us', { month: 'long' })
+    const formattedDate = date.toDateString().slice(4).split(' ');
 
     return (
         <div className="col-span-full w-full space-y-8 lg:col-span-2">
             {
-                isLoading && <div className="text-center">Loading...</div>
+                isLoading && <VideoLoad />
             }
             {
                 (!isLoading && isError) && <Error message={error?.error} />
@@ -51,7 +53,7 @@ const VideoPlayer = () => {
                             {title}
                         </h1>
                         <h2 className=" pb-4 text-sm leading-[1.7142857] text-slate-400">
-                            Uploaded on {date[1]} {longMonth} {date[2]}
+                            Uploaded on {formattedDate[1]} {longMonth} {formattedDate[2]}
                         </h2>
 
                         <div className="flex gap-4">

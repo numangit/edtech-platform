@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useGetQuizByVideoIdQuery } from "../../../features/quiz/quizApi";
 import Quiz from './Quiz';
 import Error from "../../common/Error";
+import Loader from "../../common/loader/Loader";
 
 const QuizForm = () => {
 
@@ -11,26 +12,31 @@ const QuizForm = () => {
     //getting quizzes by videoId
     const { data: quizzes, isLoading, isError, error } = useGetQuizByVideoIdQuery(id) || {};
 
-    //what to render
-    let content = null;
-
-    if (isLoading) {
-        content = <div className="text-center">Loading...</div>;
-    } else if (!isLoading && isError) {
-        content = <Error message={error?.error} />;
-    } else if (!isLoading && !isError && quizzes?.length > 0) {
-        content = quizzes?.map((quiz, index) => <Quiz key={quiz.id} quiz={quiz} index={index} />)
-    };
-
     return (
-        <div className="space-y-8 ">
-            <form>
-                {content}
-                <button
-                    className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">Submit
-                </button>
-            </form>
-        </div>
+        <>
+            {
+                (isLoading) && <Loader />
+            }
+            {
+                (!isLoading && isError) && <Error message={error?.error} />
+            }
+            {
+                (!isLoading && !isError && quizzes?.length === 0)
+                && <tr><td className="text-center">No Quiz found!</td></tr>
+            }
+            {
+                (!isLoading && !isError && quizzes?.length > 0)
+                && <div className="space-y-8 ">
+                    {
+                        quizzes?.map((quiz, index) => <Quiz key={quiz.id} quiz={quiz} index={index} />)
+                    }
+                    <button
+                        className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">Submit
+                    </button>
+                </div>
+            }
+
+        </>
     );
 };
 

@@ -1,5 +1,6 @@
 import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
 import Error from '../../common/Error';
+import Loader from '../../common/loader/Loader';
 
 const Status = () => {
 
@@ -14,7 +15,7 @@ const Status = () => {
     return (
         <>
             {
-                (isLoading) && <div><p className='text-center'>Loading...</p></div>
+                (isLoading) && <Loader />
             }
             {
                 (!isLoading && isError) && <Error message={error?.error} />

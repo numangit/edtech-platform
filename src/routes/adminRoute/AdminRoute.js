@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { selectAuth } from "../../features/auth/authSelector";
 import { logout } from "../../features/auth/authSlice";
 import useAuthCheck from "../../hooks/useAuthCheck";
+import Loader from "../../component/common/loader/Loader";
 
 const AdminRoute = ({ children }) => {
 
@@ -17,11 +18,7 @@ const AdminRoute = ({ children }) => {
 
     //if authCheck is loading
     if (isLoading) {
-        return <div className="flex items-center justify-center h-screen">
-            <p className='text-center text-2xl font-bold text-slate-500'>
-                Loading...
-            </p>
-        </div>
+        return <Loader />
     };
 
     //if user is available and is admin
