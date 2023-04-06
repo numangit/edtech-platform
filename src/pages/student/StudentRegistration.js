@@ -1,13 +1,18 @@
 import { useState } from "react";
 import logo from "../../assets/image/learningportal.svg";
 import { useRegisterMutation } from "../../features/auth/authApi";
-import { Link } from "react-router-dom";
-import Error from "../../component/common/Error";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const StudentRegistration = () => {
 
+    //find the previous location
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/course/videos/1';
+
     //mutation hook
     const [register, { isLoading, isError, error }] = useRegisterMutation();
+
 
     //input states
     const [name, setName] = useState('');
@@ -15,24 +20,31 @@ const StudentRegistration = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    //alert state
+    const [alert, setAlert] = useState(null);
+
     //function to reset
     const reset = () => {
         setName('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
-    }
+    };
 
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (password === confirmPassword) {
             const data = { name, email, password, role: 'student' };
             register(data);
             reset();
+            navigate(from === '/' ? '/course/videos/1' : from, { replace: true })
         } else {
-            window.alert('password does not match');
+            setAlert('password does not match');
         };
+
+        isError && setAlert(error?.data);
     };
 
     return (
@@ -45,6 +57,9 @@ const StudentRegistration = () => {
                     </h2>
                 </div>
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
+                    {
+                        alert && <p className="text-red-500 font-semibold text-center">{alert}</p>
+                    }
                     <input type="hidden" name="remember" value="true" />
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
@@ -100,9 +115,6 @@ const StudentRegistration = () => {
                                 onChange={e => setConfirmPassword(e.target.value)} />
                         </div>
                     </div>
-                    {
-                        isError && <Error message={error?.data} />
-                    }
                     <div className="flex items-center justify-end">
                         <div className="text-sm">
                             <Link to="/login" className="font-medium text-violet-600 hover:text-violet-500">
