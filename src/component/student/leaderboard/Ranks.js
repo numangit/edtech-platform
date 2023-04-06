@@ -1,11 +1,43 @@
-import React from 'react';
 import { useGetUsersByRoleQuery } from '../../../features/users/usersApi';
 import Rank from './Rank';
+import { useGetAssignmentMarksQuery } from '../../../features/assignmentMark/assignmentMarkApi';
+import { useGetQuizMarksQuery } from '../../../features/quizMark/quizMarkApi';
 
 const Ranks = () => {
 
-    //get all users
+    //get required data
     const { data: students } = useGetUsersByRoleQuery("student") || {};
+    const { data: assignmentMarks } = useGetAssignmentMarksQuery() || {};
+    const { data: quizMarks } = useGetQuizMarksQuery() || {};
+
+    //generating a new array for rank
+    const sortedArray = students?.map((student) => {
+
+        //get marks of student
+        const newAssignmentMarks = assignmentMarks?.filter((assignment) => assignment?.student_id === student?.id);
+        const newQuizMarks = quizMarks?.filter((quiz) => quiz?.student_id === student?.id);
+
+        // calculate total
+        const totalAssignmentMark = newAssignmentMarks?.reduce((total, current) => total + current.mark, 0);
+        const totalQuizMark = newQuizMarks?.reduce((total, current) => total + current.mark, 0);
+
+        //calculate grand total
+        const total = totalQuizMark + totalAssignmentMark;
+
+        // return object
+        return !isNaN(total) && {
+            id: student?.id,
+            name: student?.name,
+            AssignmentMark: totalAssignmentMark || 0,
+            QuizMark: totalQuizMark || 0,
+            total,
+        };
+
+    });
+
+    console.log(sortedArray);
+
+
 
     return (
         <div className="my-8">
@@ -21,11 +53,11 @@ const Ranks = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {/* {
                         students?.map(student => {
                             return <Rank key={student?.id} student={student} />
                         })
-                    }
+                    } */}
                 </tbody>
             </table>
         </div>
