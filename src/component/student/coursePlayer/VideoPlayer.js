@@ -84,7 +84,7 @@ const VideoPlayer = () => {
                                 }
                                 {
                                     (assignments?.length !== 0 && assignmentSubmitted)
-                                    && <Result />
+                                    && <Result result={assignmentSubmitted} />
                                 }
                                 {
                                     //modal
