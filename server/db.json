@@ -340,10 +340,10 @@
       "video_id": 1,
       "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
       "totalQuiz": 2,
-      "totalCorrect": 2,
-      "totalWrong": 0,
+      "totalCorrect": 1,
+      "totalWrong": 1,
       "totalMark": 10,
-      "mark": 10,
+      "mark": 5,
       "id": 2
     },
     {
@@ -352,10 +352,10 @@
       "video_id": 5,
       "video_title": "How to write a professional Resume - Resume tips for web developers",
       "totalQuiz": 1,
-      "totalCorrect": 0,
-      "totalWrong": 1,
+      "totalCorrect": 1,
+      "totalWrong": 0,
       "totalMark": 5,
-      "mark": 0,
+      "mark": 5,
       "id": 3
     }
   ]
