@@ -1,4 +1,4 @@
-//function to check answers
+//function to check and mark quiz answers
 export const checkAnswers = (answers, quizzes) => {
 
     let mark = 0;

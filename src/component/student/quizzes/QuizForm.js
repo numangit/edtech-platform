@@ -71,7 +71,7 @@ const QuizForm = () => {
                         quizzes?.map((quiz, index) => <Quiz key={quiz?.id} quiz={quiz} setAnswers={setAnswers} answers={answers} index={index} />)
                     }
                     <button onClick={handleSubmit}
-                        className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 ">Submit
+                        className="px-4 py-2 rounded-full bg-cyan block ml-auto mt-8 hover:opacity-90 active:opacity-100 active:scale-95 font-bold ">Submit
                     </button>
                 </div>
             }

@@ -113,12 +113,12 @@
       "id": 7
     },
     {
-      "description": "ক্লায়েন্ট সার্ভার রিকুয়েস্ট রেসপন্স সাইকেলে একটি স্ট্যান্ডার্ড পলিসি হলো CORS বা Cross-Origin Resource Sharing পলিসি। এই বিষয়টি আসলে কি, কিভাবে CORS error সমাধান করা যায়, কিভাবে সার্ভার থেকে সঠিক CORS header পাঠানো যায় ইত্যাদি গুরুত্বপূর্ণ কনসেপ্ট এর সহজ ব্যাখ্যা দেয়া হয়েছে এই ভিডিওতে।",
-      "duration": "17:00",
-      "title": "CORS কি - What is CORS policy - বাংলা CORS টিউটোরিয়াল",
-      "url": "https://www.youtube.com/embed/Ry_r8DCj3hw",
-      "views": "23k",
-      "createdAt": "2023-04-06T15:40:12.699Z",
+      "description": "Hi im numan aid im boreddddd. Than kyou",
+      "duration": "23:00",
+      "title": "Hi hihi h i hii hi",
+      "url": "https://www.youtube.com/embed/WC-g0JtEIwM",
+      "views": "232k",
+      "createdAt": "2023-04-07T20:00:09.813Z",
       "id": 8
     }
   ],
@@ -143,6 +143,13 @@
       "video_id": 5,
       "video_title": "How to write a professional Resume - Resume tips for web developers",
       "totalMark": 100
+    },
+    {
+      "title": "Bad sasihgnment",
+      "totalMark": "200",
+      "video_id": 8,
+      "video_title": "Hi hihi h i hii hi",
+      "id": 4
     }
   ],
   "quizzes": [
@@ -257,6 +264,62 @@
         }
       ],
       "id": 4
+    },
+    {
+      "question": "How many type of resumes are there?",
+      "video_id": 8,
+      "video_title": "Hi hihi h i hii hi",
+      "options": [
+        {
+          "id": 1,
+          "option": "Did you do your homework?",
+          "isCorrect": true
+        },
+        {
+          "id": 2,
+          "option": "Did you homework?",
+          "isCorrect": false
+        },
+        {
+          "id": 3,
+          "option": "Did homework?",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "option": "homework?",
+          "isCorrect": true
+        }
+      ],
+      "id": 5
+    },
+    {
+      "question": "How many type of resumes are there?",
+      "video_id": 8,
+      "video_title": "Hi hihi h i hii hi",
+      "options": [
+        {
+          "id": 1,
+          "option": "How many type of resumehere?",
+          "isCorrect": true
+        },
+        {
+          "id": 2,
+          "option": "How many type of resumes ",
+          "isCorrect": false
+        },
+        {
+          "id": 3,
+          "option": "How many type of re",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "option": "How many t",
+          "isCorrect": true
+        }
+      ],
+      "id": 6
     }
   ],
   "assignmentMark": [
@@ -319,6 +382,18 @@
       "repo_link": "https://github.com/numangit",
       "status": "pending",
       "id": 5
+    },
+    {
+      "student_id": 8,
+      "student_name": "Numan",
+      "assignment_id": 4,
+      "title": "Assignment 4 - Work with CORS",
+      "createdAt": "2023-04-07T19:23:08.911Z",
+      "totalMark": 100,
+      "mark": 300,
+      "repo_link": "https://lws-job-finder-numan.netlify.app/",
+      "status": "published",
+      "id": 6
     }
   ],
   "quizMark": [
@@ -357,6 +432,54 @@
       "totalMark": 5,
       "mark": 5,
       "id": 3
+    },
+    {
+      "student_id": 8,
+      "student_name": "Numan",
+      "video_id": 8,
+      "video_title": "CORS কি - What is CORS policy - বাংলা CORS টিউটোরিয়াল",
+      "totalQuiz": 1,
+      "totalCorrect": 1,
+      "totalWrong": 0,
+      "totalMark": 5,
+      "mark": 5,
+      "id": 4
+    },
+    {
+      "student_id": 8,
+      "student_name": "Numan",
+      "video_id": 1,
+      "video_title": "Debounce Function in JavaScript - JavaScript Job Interview question",
+      "totalQuiz": 2,
+      "totalCorrect": 1,
+      "totalWrong": 1,
+      "totalMark": 10,
+      "mark": 5,
+      "id": 5
+    },
+    {
+      "student_id": 8,
+      "student_name": "Numan",
+      "video_id": 2,
+      "video_title": "#2 JavaScript Tips and Tricks - JavaScript Job Interview Questions",
+      "totalQuiz": 1,
+      "totalCorrect": 1,
+      "totalWrong": 0,
+      "totalMark": 5,
+      "mark": 5,
+      "id": 6
+    },
+    {
+      "student_id": 8,
+      "student_name": "Numan",
+      "video_id": 5,
+      "video_title": "How to write a professional Resume - Resume tips for web developers",
+      "totalQuiz": 1,
+      "totalCorrect": 0,
+      "totalWrong": 1,
+      "totalMark": 5,
+      "mark": 0,
+      "id": 7
     }
   ]
 }
