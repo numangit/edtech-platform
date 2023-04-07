@@ -6,6 +6,7 @@ export const quizMarkApi = apiSlice.injectEndpoints({
         getQuizMarks: builder.query({
             query: () => ({ url: '/quizMark' })
         }),
+
         getQuizMark: builder.query({
             query: (id) => ({ url: `/quizMark?student_id_like=${id}` })
         }),
