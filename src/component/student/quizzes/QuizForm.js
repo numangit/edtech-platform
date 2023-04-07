@@ -75,7 +75,7 @@ const QuizForm = () => {
         if (window.confirm("Are you sure?")) {
             addQuizMark(data);
             navigate(`/course/videos/${id}`);
-        }
+        };
     };
 
 
