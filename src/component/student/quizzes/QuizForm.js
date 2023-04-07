@@ -16,17 +16,36 @@ const QuizForm = () => {
 
     //form input states
     const [answers, setAnswers] = useState([]);
-    console.log(answers);
 
-    //function to collection answers
-    // const getAnswers = ( option, quizId) => {
-    // };
+    //function to check answers
+    const checkAnswers = (answers, quizzes) => {
 
-    //check if answers are correct
+        let mark = 0;
+
+        answers?.forEach((quizAnswer) => {
+            quizzes?.forEach((quiz) => {
+                //check if both quiz matches
+                if (quiz?.id === quizAnswer?.quizId) {
+                    //check answer
+                    const correctOptions = quiz?.options?.filter(({ isCorrect }) => isCorrect);
+                    const submittedOptions = quizAnswer?.options;
+                    const sameLength = correctOptions.length === submittedOptions.length;
+                    const isAllCorrect = submittedOptions?.filter(({ isCorrect }) => isCorrect).length;
+                    if (sameLength && isAllCorrect) {
+                        mark += 5;
+                    };
+                };
+            });
+        });
+
+        return mark;
+    };
+
     // function to handle submit
     const handleSubmit = () => {
-
-    }
+        const mark = checkAnswers(answers, quizzes);
+        console.log(mark);
+    };
 
 
     return (
@@ -58,11 +77,10 @@ const QuizForm = () => {
                                             // onClick={(e) => getAnswers(e, option, quiz?.id)}
                                             onChange={() => {
                                                 //check if quiz is selected
-                                                console.log("check:", answers)
                                                 const quizAnswers = answers?.find((answer) => answer?.quizId === quiz?.id);
                                                 const quizOptions = quizAnswers?.options?.find((answer) => answer?.id === option?.id);
 
-                                                console.log("quiz:", quizAnswers, "option:", quizOptions)
+                                                // console.log("quiz:", quizAnswers, "option:", quizOptions)
                                                 if (!quizAnswers) {
                                                     const newQuizAnswers = { quizId: quiz?.id, options: [{ ...option }] }
                                                     setAnswers([...answers, newQuizAnswers]);
