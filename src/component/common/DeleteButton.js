@@ -2,7 +2,7 @@ const DeleteButton = ({ id, mutation }) => {
 
     //function to handle delete
     const handleDelete = (paramId) => {
-        mutation(paramId);
+        window.confirm("Are you sure?") && mutation(paramId);
     };
 
     return (

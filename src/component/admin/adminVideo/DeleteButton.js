@@ -12,8 +12,10 @@ const DeleteButton = ({ id }) => {
 
     //function to handle delete
     const handleDelete = (paramId) => {
-        deleteVideo(paramId);
-        deleteAssignment(assignments?.[0]?.id);
+        if (window.confirm("Are you sure?")) {
+            deleteVideo(paramId);
+            deleteAssignment(assignments?.[0]?.id);
+        };
     };
 
     return (
