@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/image/learningportal.svg";
 import { useRegisterMutation } from "../../features/auth/authApi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ const StudentRegistration = () => {
     const from = location.state?.from?.pathname || '/course/videos/1';
 
     //mutation hook
-    const [register, { isLoading, isError, error }] = useRegisterMutation();
+    const [register, { data, isLoading, isError, error }] = useRegisterMutation();
 
 
     //input states
@@ -31,6 +31,16 @@ const StudentRegistration = () => {
         setConfirmPassword('');
     };
 
+    //to check for response error
+    useEffect(() => {
+        if (error?.data) {
+            setAlert(error?.data);
+        };
+        if (data?.accessToken && data?.user) {
+            navigate(from === '/' ? '/course/videos/1' : from, { replace: true })
+        };
+    }, [data, error, navigate, from]);
+
     //function to handle form submit
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,9 +49,8 @@ const StudentRegistration = () => {
             const data = { name, email, password, role: 'student' };
             register(data);
             reset();
-            navigate(from === '/' ? '/course/videos/1' : from, { replace: true })
         } else {
-            setAlert('password does not match');
+            setAlert('Password does not match');
         };
 
         isError && setAlert(error?.data);

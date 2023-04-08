@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../features/auth/authSelector";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 import useAuthCheck from "../../hooks/useAuthCheck";
 import Loader from "../../component/common/loader/Loader";
@@ -11,6 +11,7 @@ const StudentRoute = ({ children }) => {
 
     const location = useLocation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     //getting current user info
     const { user } = useSelector(selectAuth) || {};
@@ -23,6 +24,10 @@ const StudentRoute = ({ children }) => {
     //if user is available and is student
     if (user?.role === "student") {
         return children;
+    } else if (location?.pathname === '/' && user?.role === "admin") {
+        //if user is admin and in "/" page
+        navigate('/admin');
+        return;
     };
 
     //if user is not logged in or is not student
