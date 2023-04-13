@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const AdminDashboard = () => {
+const AdminDashBoard = () => {
 
     //dashboard options
     const options = [
@@ -62,4 +62,4 @@ const AdminDashboard = () => {
     );
 };
 
-export default AdminDashboard;
+export default AdminDashBoard;
